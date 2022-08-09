@@ -8,6 +8,9 @@ const typeDefs = gql`
     username: String
     email: String
   }
+  type Product {
+
+  }
   type Auth {
     token: ID!
     user: User
@@ -19,6 +22,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addProduct()
   }
 `;
 
