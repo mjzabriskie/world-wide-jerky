@@ -9,6 +9,22 @@ const productSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
+    unitPrice: {
+
+    },
+    ingredients: [],
+    nutrition: {
+
+    },
+    allergens: {
+
+    },
+    image: {
+
+    },
+    description: {
+
+    },
     createdAt: {
       type: Date,
       default: Date.now,
