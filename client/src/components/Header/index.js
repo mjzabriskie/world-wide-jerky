@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="d-flex flex-wrap justify-content-center w-100">
       <nav className="navbar bg-dark w-100">
-        <div className="navbar-brand p-2">
+        <div className="navbar-brand text-decoration-none p-2">
           <Link to="/">
             <h1 className="text-light font-weight-bold px-5">World Wide Jerky</h1>
           </Link>
