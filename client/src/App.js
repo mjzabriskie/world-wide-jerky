@@ -6,12 +6,14 @@ import {
 } from "@apollo/client";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
-import SingleThought from "./pages/SingleThought";
-import Profile from "./pages/Profile";
+import SingleProduct from "./pages/SingleProduct";
+//import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 
 import Header from "./components/Header";
@@ -24,14 +26,14 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    }
-  }
-})
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
@@ -49,11 +51,13 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/profile">
+              <Route path="/about" element={<About />} />
+              {/* <Route path="/profile">
                 <Route path=":username" element={<Profile />} />
                 <Route path="" element={<Profile />} />
-              </Route>
-              <Route path="/thought/:id" element={<SingleThought />} />
+              </Route> */}
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/product/:id" element={<SingleProduct />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
