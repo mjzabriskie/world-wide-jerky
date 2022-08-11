@@ -1,5 +1,6 @@
 import React from "react";
 import emailjs from "emailjs-com";
+import Cart from '../components/Cart';
 
 function Contact() {
     function sendEmail(e) {
