@@ -1,35 +1,32 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+//const dateFormat = require('../utils/dateFormat');
 
 const productSchema = new Schema(
   {
     productName: {
       type: String,
       required: 'You must have a product name',
+      unique: true,
+      trim: true,
       minlength: 1,
       maxlength: 280
     },
-    unitPrice: {
+    // unitPrice: {
 
-    },
-    ingredients: [],
-    nutrition: {
+    // },
+    // ingredients: [],
+    // nutrition: {
 
-    },
-    allergens: {
+    // },
+    // allergens: {
 
-    },
-    image: {
+    // },
+    // image: {
 
-    },
-    description: {
+    // },
+    // description: {
 
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: timestamp => dateFormat(timestamp)
-    },
+    // },
   },
   {
     toJSON: {
