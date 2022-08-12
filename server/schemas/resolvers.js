@@ -1,4 +1,4 @@
-// const { User, Thought } = require("../models"); Our models here
+const { User, Product } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -16,10 +16,10 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     // get a user by username
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
-        .select("-__v -password")
-    },
+    // user: async (parent, { username }) => {
+    //   return User.findOne({ username })
+    //     .select("-__v -password")
+    // },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -45,6 +45,6 @@ const resolvers = {
       return { token, user };
     },
   },
-};
+ };
 
 module.exports = resolvers;
