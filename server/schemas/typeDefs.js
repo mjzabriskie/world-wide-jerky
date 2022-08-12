@@ -3,31 +3,32 @@ const { gql } = require("apollo-server-express");
 
 // create our typeDefs
 const typeDefs = gql`
-  type User {
-    _id: ID
-    username: String
-    email: String
-    admin: 
-  }
-  type Product {
-    _id: ID
-    unitPrice: Int
-    productName: String
-    nutrition: [String]
-    ingredients: [String]
-  }
-  type Auth {
-    token: ID!
-    user: User
-  }
+type User {
+  _id: ID
+  username: String
+  email: String
+  admin: Boolean
+}
+type Product {
+  _id: ID
+  name: String
+  description: String
+  image: String
+  price: String
+  stock: String
+  nutrition: [Nutrition]
+  ingredients: [String]
+}
+type Nutrition {
+  calories: String
+  totalFat: String
+  sodium: String
+  totalCarbs: String
+  protein: String
+}
   type Query {
-    me: User
-    user(username: String!): User
-  }
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    addProduct(productName: String!): Product
+    users: [User]
+    products: [Product]
   }
 `;
 
