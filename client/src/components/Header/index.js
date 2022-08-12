@@ -10,13 +10,12 @@ const Header = () => {
 
   return (
     <header className="d-flex flex-wrap justify-content-center w-100">
-      <nav className="navbar bg-dark w-100">
-        <div className="navbar-brand text-decoration-none p-2">
-          <Link to="/">
-            <h1 className="text-light font-weight-bold px-5">World Wide Jerky</h1>
+      <div className="navbar bg-dark w-100">
+          <Link className="navbar-brand text-decoration-none text-light font-weight-bold px-5" to="/">
+            <h1 className="px-5">World Wide Jerky</h1>
           </Link>
 
-          <div className="text-center">
+          <div className="text-center mx-5">
             {Auth.loggedIn() ? (
               <>
                 <Link to="/profile">Me</Link>
@@ -24,13 +23,12 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
+                <Link className="text-decoration-none px-2" to="/login">Login</Link>
+                <Link className="text-decoration-none px-2" to="/signup">Signup</Link>
               </>
             )}
           </div>
-        </div>
-      </nav>
+      </div>
       
     </header>
   );
