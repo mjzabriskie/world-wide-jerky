@@ -7,9 +7,14 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    admin: 
   }
   type Product {
-
+    _id: ID
+    unitPrice: Int
+    productName: String
+    nutrition: [String]
+    ingredients: [String]
   }
   type Auth {
     token: ID!
@@ -22,7 +27,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addProduct()
+    addProduct(productName: String!): Product
   }
 `;
 
