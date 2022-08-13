@@ -24,21 +24,22 @@ db.once('open', async () => {
   const productData = [];
 
   for (let i = 0; i < 10; i += 1) {
-    const productName = faker.commerce.productName() + i;
+    const name = faker.commerce.productName() + i;
     const description = 'this is a product description';
-    const image = faker.image.food();
+    let image = faker.image.food();
+    image = image.replace('lorempixel', 'loremflickr');
     const price = faker.commerce.price(500, 1000, 0);
     const stock = faker.commerce.price(20, 50, 0);
-    const nutrition = [{
+    const nutrition = {
       calories: faker.commerce.price(300, 500, 0),
       totalFat: faker.commerce.price(20, 50, 0) + " g",
       sodium: faker.commerce.price(20, 50, 0) + " mg",
       totalCarbs: faker.commerce.price(20, 50, 0) + " g",
       protein: faker.commerce.price(20, 50, 0) + " g",
-    }]
+    }
     const ingredients = ['Carbonated Water', 'Sugar', 'Glucose', 'Citric Acid', 'Taurine'];
 
-    productData.push({ productName, description, image, price, stock, nutrition, ingredients });
+    productData.push({ name, description, image, price, stock, nutrition, ingredients });
   }
 
   const createdProducts = await Product.collection.insertMany(productData);

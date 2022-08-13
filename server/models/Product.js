@@ -4,16 +4,16 @@ const nutritionSchema = require('./Nutrition');
 
 const productSchema = new Schema(
   {
-    productName: {
+    name: {
       type: String,
       required: 'You must have a product name',
+      unique: true,
       trim: true,
       minlength: 1,
       maxlength: 500
     },
     description: {
       type: String,
-      required: 'You must enter a description',
       trim: true,
       maxlength: 1500
     },
