@@ -42,17 +42,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      friendCount
-      friends {
-        _id
-        username
-      }
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
-      }
+      admin
     }
   }
 `;

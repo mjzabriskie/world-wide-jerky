@@ -40,7 +40,7 @@ code {
 }
 
 .secondary {
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 .tertiary {
