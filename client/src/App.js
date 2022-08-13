@@ -10,6 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import CartPage from "./pages/CartLanding/CartPage";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import SingleProduct from "./pages/SingleProduct";
@@ -20,6 +21,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
+
+import { StoreProvider } from './utils/GlobalState';
+import Auth from "./utils/auth";
+import Cart from "./components/Cart";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -45,23 +50,27 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/about" element={<About />} />
-              {/* <Route path="/profile">
+          <StoreProvider>
+            <Header />
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/about" element={<About />} />
+                {/* <Route path="/profile">
                 <Route path=":username" element={<Profile />} />
                 <Route path="" element={<Profile />} />
               </Route> */}
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/product/:id" element={<SingleProduct />} />
-              <Route path="*" element={<NoMatch />} />
-            </Routes>
-          </div>
-          <Footer />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/cartpage" element={<CartPage />} />
+                <Route path="/product/:id" element={<SingleProduct />} />
+                <Route path="*" element={<NoMatch />} />
+              </Routes>
+            </div>
+            <Footer />
+            {Auth.loggedIn() && <Cart />}
+          </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
