@@ -30,11 +30,9 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
-
   type Checkout {
     session: ID
   }
-
   type Query {
     me: User
     users: [User]
