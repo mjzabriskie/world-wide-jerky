@@ -26,9 +26,17 @@ type Nutrition {
   totalCarbs: String
   protein: String
 }
+type Auth {
+  token: ID!
+  user: User
+}
   type Query {
     users: [User]
     products: [Product]
+  }
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    createUser(username: String!, email: String!, password: String!, admin: Boolean): Auth
   }
 `;
 
