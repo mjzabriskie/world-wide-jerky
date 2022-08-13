@@ -58,7 +58,7 @@ function CartPage() {
                         <div className="col">TOTAL PRICE</div>
                         <div className="col text-right">&#36; 137.00</div>
                     </div>
-                    <button className="btn">CHECKOUT</button>
+                    <button className="checkoutbtn">CHECKOUT</button>
                 </div>
             </div>
         </div>

@@ -108,7 +108,7 @@ input:focus::-webkit-input-placeholder
 {
       color:transparent;
 }
-.btn{
+.checkoutbtn{
     background-color: #000;
     border-color: #000;
     color: white;
@@ -116,19 +116,21 @@ input:focus::-webkit-input-placeholder
     font-size: 0.7rem;
     margin-top: 4vh;
     padding: 1vh;
-    border-radius: 0;
+    border-radius: 0%;
 }
-.btn:focus{
+.checkoutbtn:focus{
     box-shadow: none;
     outline: none;
     box-shadow: none;
     color: white;
     -webkit-box-shadow: none;
     -webkit-user-select: none;
+        user-select: none;
     transition: none; 
 }
-.btn:hover{
+.checkoutbtn:hover{
     color: white;
+    background-color: green;
 }
 a{
     color: black; 
