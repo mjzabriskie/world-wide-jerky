@@ -50,3 +50,8 @@ code {
 .quatrinary {
   color: var(--quatrinary);
 }
+
+.btnForm {
+  border: none;
+  outline: none;
+}

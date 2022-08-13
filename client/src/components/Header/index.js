@@ -80,7 +80,7 @@ const Header = (props) => {
             <h1 className="secondary font-weight-bold mx-5 px-5">World Wide Jerky</h1>
           </Link>
 
-          <div className="text-center text-decoration-none mx-5 px-5">
+          <div className="d-flex flex-row text-center mx-5 px-5">
             {Auth.loggedIn() ? (
               <>
                 <Link className="text-decoration-none px-2" to="/profile">Me</Link>
@@ -89,7 +89,7 @@ const Header = (props) => {
             ) : (
               <>
                 {/* Login Modal */}
-                <button onClick={handleLoginShow}>
+                <button onClick={handleLoginShow} className='text-decoration-none backPrimary btnForm px-4'>
                   Login
                 </button>
 
@@ -126,7 +126,7 @@ const Header = (props) => {
                 </Modal>
 
                 {/* Signup Modal */}
-                <button onClick={handleSignupShow}>
+                <button onClick={handleSignupShow} className='text-decoration-none backPrimary btnForm px-4'>
                   Sign Up
                 </button>
 
@@ -171,7 +171,7 @@ const Header = (props) => {
                   </Modal.Body>
                 </Modal>
                 {/* <Link className="text-decoration-none px-2" to="/login">Login</Link> */}
-                <Link className="text-decoration-none px-2" to="/signup">Signup</Link>
+                {/* <Link className="text-decoration-none px-2" to="/signup">Signup</Link> */}
               </>
             )}
           </div>
