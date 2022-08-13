@@ -3,12 +3,12 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
-    // username: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true
-    // },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true
+    },
     email: {
       type: String,
       required: true,
@@ -20,6 +20,11 @@ const userSchema = new Schema(
       required: true,
       minlength: 8
     },
+    admin: {
+      type: Boolean,
+      required: true,
+      default: false
+    }
   },
   {
     toJSON: {

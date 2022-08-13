@@ -1,4 +1,4 @@
-// const { User, Thought } = require("../models"); Our models here
+const { User, Product } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -15,10 +15,20 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    // get a user by username
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
-        .select("-__v -password")
+    user: async (parent, { username }, context) => {
+      if (context.user) {
+        return User.findOne({ username }).select("-__v -password");
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    users: async () => {
+      if (context.user) {
+        return User.find();
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    products: async () => {
+      return Product.find();
     },
   },
   Mutation: {
@@ -43,6 +53,30 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    addProduct: async (parent, args, context) => {
+      if (context.user) {
+        const product = await Product.create({ ...args });
+
+        return product;
+      }
+
+      throw new AuthenticationError(
+        "You must be logged in to create a product"
+      );
+    },
+    addNutrition: async (parent, args, context) => {
+      if (context.user) {
+        const updatedProduct = await Product.findOneAndUpdate(
+          { _id: args.productId },
+          { $push: { nutrition: { ...args }}},
+          { new: true}
+        );
+
+        return updatedThought;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };
