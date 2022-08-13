@@ -17,6 +17,16 @@ const Home = () => {
 
   return (
     <main>
+      <div className="bg-primary">
+        {loggedIn && (
+          <div className="">
+            LOGGED IN
+          </div>
+        )}
+        <div className="bg-secondary">
+          NOT LOGGED IN
+        </div>
+      </div>
       {/* <div className="flex-row justify-space-between"> */}
         {/* {loggedIn && (
           <div className="col-12 mb-3">
