@@ -18,3 +18,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.backPrimary {
+  background-color: var(--primary);
+}
+
+.backSecondary {
+  background-color: var(--secondary);
+}
+
+.backTertiary {
+  background-color: var(--tertiary);
+}
+
+.backQuatrinary {
+  background-color: var(--quatrinary);
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.secondary {
+  color: var(--primary);
+}
+
+.tertiary {
+  color: var(--tertiary);
+}
+
+.quatrinary {
+  color: var(--quatrinary);
+}
