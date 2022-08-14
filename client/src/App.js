@@ -57,11 +57,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/about" element={<About />} />
-                {/* <Route path="/profile">
-                <Route path=":username" element={<Profile />} />
-                <Route path="" element={<Profile />} />
-              </Route> */}
+                {/* <Route path="/about" element={<About />} /> */}
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/cartpage" element={<CartPage />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
