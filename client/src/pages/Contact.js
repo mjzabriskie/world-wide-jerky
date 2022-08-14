@@ -1,6 +1,5 @@
 import React from "react";
 import emailjs from "emailjs-com";
-import Cart from '../components/Cart';
 
 function Contact() {
     function sendEmail(e) {
@@ -19,7 +18,7 @@ function Contact() {
         <div className="">
             <div className="" />
             <div className="">
-                <h2>Contact Me</h2>
+                <h2>Contact Us</h2>
                 <form className="" onSubmit={sendEmail} method="POST">
                     <label htmlFor="name">Name</label>
                     <input className="form-control" type="text" name="name" required />
