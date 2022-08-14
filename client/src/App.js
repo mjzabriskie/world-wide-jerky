@@ -10,6 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import CartPage from "./pages/CartLanding/CartPage";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import SingleProduct from "./pages/SingleProduct";
@@ -48,7 +49,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div className="d-flex flex-column min-vh-100">
           <StoreProvider>
             <Header />
             <div className="container">
@@ -62,6 +63,7 @@ function App() {
                 <Route path="" element={<Profile />} />
               </Route> */}
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/cartpage" element={<CartPage />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
                 <Route path="*" element={<NoMatch />} />
               </Routes>

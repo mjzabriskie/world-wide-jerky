@@ -22,12 +22,12 @@ function Contact() {
                 <h2>Contact Me</h2>
                 <form className="" onSubmit={sendEmail} method="POST">
                     <label htmlFor="name">Name</label>
-                    <input className="" type="text" name="name" required />
+                    <input className="form-control" type="text" name="name" required />
                     <label htmlFor="email">Email Address</label>
-                    <input className="" type="email" name="email" required />
+                    <input className="form-control" type="email" name="email" required />
                     <label htmlFor="message">Message</label>
-                    <textarea rows='8' className="" type="text" name="message" required />
-                    <button className="" type="submit">Send Email</button>
+                    <textarea rows='8' className="form-control" type="text" name="message" required />
+                    <button className="btn" type="submit">Send Email</button>
                 </form>
             </div>
         </div>

@@ -9,26 +9,29 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <Link to="/">
-          <h1>Deep Thoughts</h1>
-        </Link>
+    <header className="d-flex flex-wrap justify-content-center w-100">
+      <nav className="navbar bg-dark w-100">
+        <div className="navbar-brand p-2">
+          <Link to="/">
+            <h1 className="text-light font-weight-bold px-5">World Wide Jerky</h1>
+          </Link>
 
-        <nav className="text-center">
-          {Auth.loggedIn() ? (
-            <>
-              <Link to="/profile">Me</Link>
-              <a href="/" onClick={logout}>Logout</a>
-            </>
-          ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
-            </>
-          )}
-        </nav>
-      </div>
+          <div className="text-center">
+            {Auth.loggedIn() ? (
+              <>
+                <Link to="/profile">Me</Link>
+                <a href="/" onClick={logout}>Logout</a>
+              </>
+            ) : (
+              <>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Signup</Link>
+              </>
+            )}
+          </div>
+        </div>
+      </nav>
+
     </header>
   );
 };
