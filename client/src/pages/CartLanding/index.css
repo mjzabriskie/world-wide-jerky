@@ -125,13 +125,13 @@ input:focus::-webkit-input-placeholder
     color: white;
     -webkit-box-shadow: none;
     -webkit-user-select: none;
-    transition: none; 
+    transition: none;
 }
 .btn:hover{
     color: white;
 }
 a{
-    color: black; 
+    color: black;
 }
 a:hover{
     color: black;
@@ -142,4 +142,8 @@ a:hover{
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center;
+}
+
+.btn-products {
+    width: 100px;
 }
