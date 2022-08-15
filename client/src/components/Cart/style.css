@@ -23,12 +23,21 @@
   top: .5rem;
   right: .5rem;
   cursor: pointer;
-  color: var(--tertiary);
-  font-size: 16px;
 }
 
 .cart .close:hover {
   text-decoration: underline;
+}
+
+.cart img {
+  width: 70px;
+  margin-right: 1rem;
+}
+
+.cart input {
+  width: 50px;
+  padding: 0;
+  margin: 0 .5rem 1rem 0;
 }
 
 .cart-closed {
@@ -43,12 +52,6 @@
   padding: .25rem;
   width: 50px;
   height: 50px;
-}
-
-.cart input {
-  width: 50px;
-  padding: 0;
-  margin: 0 .5rem 1rem 0;
 }
 
 @media screen and (max-width: 768px) {

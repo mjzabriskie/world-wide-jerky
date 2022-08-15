@@ -3,17 +3,24 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
+import { useStoreContext } from "../../utils/GlobalState";
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
+import { idbPromise } from "../../utils/helpers";
 
 const ProductModal = (product) => {
+  const [state, dispatch] = useStoreContext();
+
   const {
-    product: { _id },
-    product: { name },
-    product: { description },
-    product: { image },
-    product: { price },
-    product: { stock },
-    product: { ingredients },
+    _id,
+    name,
+    description,
+    image,
+    price,
+    stock,
+    ingredients,
   } = product;
+
+  const { cart } = state
 
   const [show, setShow] = useState(false);
 
@@ -22,9 +29,30 @@ const ProductModal = (product) => {
 
   const images = image;
 
+  const addToCart = () => {
+    const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+    if (itemInCart) {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: _id,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
+      idbPromise('cart', 'put', {
+        ...itemInCart,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
+    } else {
+      dispatch({
+        type: ADD_TO_CART,
+        product: { ...product, purchaseQuantity: 1 }
+      });
+      idbPromise('cart', 'put', { ...product, purchaseQuantity: 1 });
+    }
+  }
+
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card className="m-2 shadow" style={{ width: "18rem" }}>
         <Card.Img
           className="pointer"
           variant="top"
@@ -49,7 +77,7 @@ const ProductModal = (product) => {
             >
               More Info
             </Button>
-            <Button className="btn-products" variant="primary">
+            <Button className="btn-products" variant="primary" onClick={addToCart}>
               Add to Cart
             </Button>
           </div>
@@ -62,8 +90,8 @@ const ProductModal = (product) => {
         </Modal.Header>
         <Modal.Body>
           <Carousel variant="dark" interval={null}>
-            {images.map((image) => (
-              <Carousel.Item>
+            {images.map((image, index) => (
+              <Carousel.Item key={index}>
                 <img src={image} className="d-block w-100" />
               </Carousel.Item>
             ))}
@@ -84,7 +112,7 @@ const ProductModal = (product) => {
             variant="dark"
             className="btn-products"
             onClick={() => {
-              handleClose();
+              addToCart();
             }}
           >
             Add to Cart

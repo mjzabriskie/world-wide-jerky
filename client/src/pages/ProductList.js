@@ -17,9 +17,16 @@ const ProductList = () => {
         ) : (
           products &&
           products.map((product) => (
-            <div key={product._id} className="m-2 shadow">
-              <ProductModal product={product} />
-            </div>
+            <ProductModal
+              key={product._id}
+              _id={product._id}
+              name={product.name}
+              description={product.description}
+              image={product.image}
+              price={product.price}
+              stock={product.stock}
+              ingredients={product.ingredients}
+            />
           ))
         )}
       </div>

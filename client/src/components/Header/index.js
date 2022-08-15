@@ -87,24 +87,12 @@ const Header = (props) => {
         </Link>
 
         <div className="d-flex flex-row text-center mx-5 px-5">
-          <Link className="text-decoration-none px-2" to="/product-list">
-            Shop
-          </Link>
-          <Link className="text-decoration-none px-2" to="/contact">
-            Contact Us
-          </Link>
+          <Link className="btn btnForm text-decoration-none px-4" to="/productlist">Store</Link>
+          <Link className="btn btnForm text-decoration-none px-4" to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
-              <Link className="text-decoration-none px-2" to="/profile">
-                Me
-              </Link>
-              <a
-                className="text-decoration-none px-2"
-                href="/"
-                onClick={logout}
-              >
-                Logout
-              </a>
+              <Link className="btn btnForm text-decoration-none px-4" to="/profile">Me</Link>
+              <a className="btn btnForm text-decoration-none px-4" href="/" onClick={logout}>Logout</a>
             </>
           ) : (
             <>
@@ -122,8 +110,9 @@ const Header = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                   <form onSubmit={handleLoginFormSubmit}>
+                    <label htmlFor="email">Email</label>
                     <input
-                      className="form-input"
+                      className="form-control"
                       placeholder="Your email"
                       name="email"
                       type="email"
@@ -131,8 +120,9 @@ const Header = (props) => {
                       value={formState.email}
                       onChange={handleChange}
                     />
+                    <label htmlFor="password">Password</label>
                     <input
-                      className="form-input"
+                      className="form-control"
                       placeholder="******"
                       name="password"
                       type="password"
@@ -162,8 +152,9 @@ const Header = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                   <form onSubmit={handleSignupFormSubmit}>
+                    <label htmlFor="username">Username</label>
                     <input
-                      className="form-input"
+                      className="form-control"
                       placeholder="Your username"
                       name="username"
                       type="username"
@@ -171,8 +162,9 @@ const Header = (props) => {
                       value={formState.username}
                       onChange={handleChange}
                     />
+                    <label htmlFor="email">Email</label>
                     <input
-                      className="form-input"
+                      className="form-control"
                       placeholder="Your email"
                       name="email"
                       type="email"
@@ -180,8 +172,9 @@ const Header = (props) => {
                       value={formState.email}
                       onChange={handleChange}
                     />
+                    <label htmlFor="password">Password</label>
                     <input
-                      className="form-input"
+                      className="form-control"
                       placeholder="******"
                       name="password"
                       type="password"
