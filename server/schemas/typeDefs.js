@@ -13,7 +13,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
-    image: String
+    image: [String]
     price: String
     stock: String
     nutrition: [Nutrition]
