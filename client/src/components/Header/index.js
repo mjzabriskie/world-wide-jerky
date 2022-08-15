@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import Modal from "react-bootstrap/Modal";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
+import { useStoreContext } from "../../utils/GlobalState";
+import { TOGGLE_LOGIN, TOGGLE_SIGNUP } from "../../utils/actions";
 
 const Header = (props) => {
+  const [state, dispatch] = useStoreContext();
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -67,8 +70,21 @@ const Header = (props) => {
   // login modal stuff
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
-  const handleLoginClose = () => setOpenLoginModal(false);
+  const handleLoginClose = () => { setOpenLoginModal(false); }
   const handleLoginShow = () => setOpenLoginModal(true);
+
+  function toggleLogin() {
+    dispatch({ type: TOGGLE_LOGIN });
+  }
+
+  function toggleSignup() {
+    dispatch({ type: TOGGLE_SIGNUP });
+  }
+
+  function toggleModals() {
+    toggleLogin();
+    toggleSignup();
+  }
 
   // signup modal stuff
 
@@ -76,6 +92,11 @@ const Header = (props) => {
 
   const handleSignupClose = () => setOpenSignupModal(false);
   const handleSignupShow = () => setOpenSignupModal(true);
+
+  useEffect(() => {
+    state.loginOpen ? handleLoginShow() : handleLoginClose();
+    state.signupOpen ? handleSignupShow() : handleSignupClose();
+  }, [state, dispatch]);
 
   return (
     <header className="d-flex flex-wrap justify-content-center w-100">
@@ -98,17 +119,18 @@ const Header = (props) => {
             <>
               {/* Login Modal */}
               <button
-                onClick={handleLoginShow}
+                onClick={toggleLogin}
                 className="text-decoration-none backPrimary btnForm px-4"
               >
                 Login
               </button>
 
-              <Modal show={openLoginModal} onHide={handleLoginClose}>
+              <Modal show={openLoginModal} onHide={toggleLogin}>
                 <Modal.Header closeButton>
                   <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                  <button className="btn d-block w-100" onClick={toggleModals}>Signup Instead</button>
                   <form onSubmit={handleLoginFormSubmit}>
                     <label htmlFor="email">Email</label>
                     <input
@@ -140,17 +162,18 @@ const Header = (props) => {
 
               {/* Signup Modal */}
               <button
-                onClick={handleSignupShow}
+                onClick={toggleSignup}
                 className="text-decoration-none backPrimary btnForm px-4"
               >
                 Sign Up
               </button>
 
-              <Modal show={openSignupModal} onHide={handleSignupClose}>
+              <Modal show={openSignupModal} onHide={toggleSignup}>
                 <Modal.Header closeButton>
                   <Modal.Title>Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                  <button className="btn d-block w-100" onClick={toggleModals}>Login Instead</button>
                   <form onSubmit={handleSignupFormSubmit}>
                     <label htmlFor="username">Username</label>
                     <input
