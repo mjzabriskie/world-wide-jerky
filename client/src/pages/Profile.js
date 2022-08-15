@@ -1,15 +1,17 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
-
 import { Navigate, useParams } from "react-router-dom";
 import Auth from "../utils/auth";
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_USER } from "../utils/queries";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-const Profile = () => {
+const Profile = (props) => {
   const { username: userParam } = useParams();
+  console.log(useParams())
 
-  const { loading, data } = useQuery(QUERY_USER, {
+  // useMutation will be used to change passwords and update admin status
+
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam }
   });
 
@@ -19,11 +21,19 @@ const Profile = () => {
 
   //navigate to personal profile page if username is the logged in user's
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile:username" />;
+    return <Navigate to="/profile:username" />
   }
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (!user?.username) {
+    return (
+      <h4>
+        You need to be logged in to see this page.
+      </h4>
+    );
   }
 
 
