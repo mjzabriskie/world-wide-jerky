@@ -33,17 +33,19 @@ const CarouselComponent = () => {
 
     return (
         <Carousel>
-            {state.products.map((product, index) => (
-                <Carousel.Item key={product._id}>
-                    <div>
-                        <CarouselImage
-                            image={product.image}
-                            name={product.name}
-                            description={product.description}
-                        />
-                    </div>
-                </Carousel.Item>
-            ))}
+            {loading ? <h2>Loading...</h2>
+                :
+                state.products.map((product, index) => (
+                    <Carousel.Item key={product._id}>
+                        <div>
+                            <CarouselImage
+                                image={product.image}
+                                name={product.name}
+                                description={product.description}
+                            />
+                        </div>
+                    </Carousel.Item>
+                ))}
         </Carousel>
     )
 }

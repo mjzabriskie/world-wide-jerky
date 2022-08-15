@@ -13,7 +13,7 @@ import CartPage from "./pages/CartLanding/CartPage";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import SingleProduct from "./pages/SingleProduct";
-import ProductList from './pages/ProductList';
+import ProductList from "./pages/ProductList";
 import Signup from "./pages/Signup";
 import Profile from './pages/Profile';
 
@@ -22,7 +22,7 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 
-import { StoreProvider } from './utils/GlobalState';
+import { StoreProvider } from "./utils/GlobalState";
 import Auth from "./utils/auth";
 import Cart from "./components/Cart";
 
@@ -58,9 +58,9 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/productlist" element={<ProductList />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/cartpage" element={<CartPage />} />
-                <Route path="/productlist" element={<ProductList />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
                 <Route path="*" element={<NoMatch />} />
               </Routes>

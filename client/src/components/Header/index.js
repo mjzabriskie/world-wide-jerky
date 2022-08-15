@@ -7,7 +7,11 @@ import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
 import { QUERY_USER } from "../../utils/queries";
 
 const Header = (props) => {
-  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
   const [login, { loginError }] = useMutation(LOGIN_USER);
   const [addUser, { singupError }] = useMutation(ADD_USER);
 
@@ -65,10 +69,10 @@ const Header = (props) => {
     }
   };
 
-  const logout = event => {
+  const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-  }
+  };
   // login modal stuff
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
@@ -86,21 +90,26 @@ const Header = (props) => {
     <header className="d-flex flex-wrap justify-content-center w-100">
       <div className="navbar backPrimary w-100">
         <Link className="navbar-brand text-decoration-none px-5" to="/">
-          <h1 className="secondary font-weight-bold mx-5 px-5">World Wide Jerky</h1>
+          <h1 className="secondary font-weight-bold mx-5 px-5">
+            World Wide Jerky
+          </h1>
         </Link>
 
         <div className="d-flex flex-row text-center mx-5 px-5">
-          <Link className='text-decoration-none backPrimary btnForm px-4' to="/productlist">Store</Link>
-          <Link className='text-decoration-none backPrimary btnForm px-4' to="/contact">Contact Us</Link>
+          <Link className="btn btnForm text-decoration-none px-4" to="/productlist">Store</Link>
+          <Link className="btn btnForm text-decoration-none px-4" to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
-              <Link className="text-decoration-none px-2" to="/profile">Profile</Link>
-              <a className="text-decoration-none px-2" href="/" onClick={logout}>Logout</a>
+              <Link className="btn btnForm text-decoration-none px-4" to="/profile">Me</Link>
+              <a className="btn btnForm text-decoration-none px-4" href="/" onClick={logout}>Logout</a>
             </>
           ) : (
             <>
               {/* Login Modal */}
-              <button onClick={handleLoginShow} className='text-decoration-none backPrimary btnForm px-4'>
+              <button
+                onClick={handleLoginShow}
+                className="text-decoration-none backPrimary btnForm px-4"
+              >
                 Login
               </button>
 
@@ -110,18 +119,20 @@ const Header = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                   <form onSubmit={handleLoginFormSubmit}>
+                    <label htmlFor="email">Email</label>
                     <input
-                      className="form-input"
-                      placeholder="Your email"
+                      className="form-control"
+                      placeholder="example@gmail.com"
                       name="email"
                       type="email"
                       id="email"
                       value={formState.email}
                       onChange={handleChange}
                     />
+                    <label htmlFor="password">Password</label>
                     <input
-                      className="form-input"
-                      placeholder="******"
+                      className="form-control"
+                      placeholder="***********"
                       name="password"
                       type="password"
                       id="password"
@@ -137,7 +148,10 @@ const Header = (props) => {
               </Modal>
 
               {/* Signup Modal */}
-              <button onClick={handleSignupShow} className='text-decoration-none backPrimary btnForm px-4'>
+              <button
+                onClick={handleSignupShow}
+                className="text-decoration-none backPrimary btnForm px-4"
+              >
                 Sign Up
               </button>
 
@@ -147,27 +161,30 @@ const Header = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                   <form onSubmit={handleSignupFormSubmit}>
+                    <label htmlFor="username">Username</label>
                     <input
-                      className="form-input"
-                      placeholder="Your username"
+                      className="form-control"
+                      placeholder="exampleuser1"
                       name="username"
                       type="username"
                       id="username"
                       value={formState.username}
                       onChange={handleChange}
                     />
+                    <label htmlFor="email">Email</label>
                     <input
-                      className="form-input"
-                      placeholder="Your email"
+                      className="form-control"
+                      placeholder="example@gmail.com"
                       name="email"
                       type="email"
                       id="email"
                       value={formState.email}
                       onChange={handleChange}
                     />
+                    <label htmlFor="password">Password</label>
                     <input
-                      className="form-input"
-                      placeholder="******"
+                      className="form-control"
+                      placeholder="***********"
                       name="password"
                       type="password"
                       id="password"

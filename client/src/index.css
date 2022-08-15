@@ -55,3 +55,7 @@ code {
   border: none;
   outline: none;
 }
+
+.pointer {
+  cursor: pointer;
+}
