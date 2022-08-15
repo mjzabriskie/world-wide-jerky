@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
-import Modal from 'react-bootstrap/Modal';
-import { useMutation } from '@apollo/client';
+import Modal from "react-bootstrap/Modal";
+import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
 
 const Header = (props) => {
-  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
   const [login, { loginError }] = useMutation(LOGIN_USER);
   const [addUser, { singupError }] = useMutation(ADD_USER);
 
@@ -56,10 +60,10 @@ const Header = (props) => {
     }
   };
 
-  const logout = event => {
+  const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-  }
+  };
   // login modal stuff
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
@@ -77,21 +81,38 @@ const Header = (props) => {
     <header className="d-flex flex-wrap justify-content-center w-100">
       <div className="navbar backPrimary w-100">
         <Link className="navbar-brand text-decoration-none px-5" to="/">
-          <h1 className="secondary font-weight-bold mx-5 px-5">World Wide Jerky</h1>
+          <h1 className="secondary font-weight-bold mx-5 px-5">
+            World Wide Jerky
+          </h1>
         </Link>
 
         <div className="d-flex flex-row text-center mx-5 px-5">
-          <Link className="text-decoration-none px-2" to="/productlist">Store</Link>
-          <Link className="text-decoration-none px-2" to="/contact">Contact Us</Link>
+          <Link className="text-decoration-none px-2" to="/product-list">
+            Shop
+          </Link>
+          <Link className="text-decoration-none px-2" to="/contact">
+            Contact Us
+          </Link>
           {Auth.loggedIn() ? (
             <>
-              <Link className="text-decoration-none px-2" to="/profile">Me</Link>
-              <a className="text-decoration-none px-2" href="/" onClick={logout}>Logout</a>
+              <Link className="text-decoration-none px-2" to="/profile">
+                Me
+              </Link>
+              <a
+                className="text-decoration-none px-2"
+                href="/"
+                onClick={logout}
+              >
+                Logout
+              </a>
             </>
           ) : (
             <>
               {/* Login Modal */}
-              <button onClick={handleLoginShow} className='text-decoration-none backPrimary btnForm px-4'>
+              <button
+                onClick={handleLoginShow}
+                className="text-decoration-none backPrimary btnForm px-4"
+              >
                 Login
               </button>
 
@@ -128,7 +149,10 @@ const Header = (props) => {
               </Modal>
 
               {/* Signup Modal */}
-              <button onClick={handleSignupShow} className='text-decoration-none backPrimary btnForm px-4'>
+              <button
+                onClick={handleSignupShow}
+                className="text-decoration-none backPrimary btnForm px-4"
+              >
                 Sign Up
               </button>
 

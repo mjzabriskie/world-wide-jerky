@@ -1,24 +1,24 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_PRODUCTS = gql`
-query products {
-  products {
-    _id
-    name
-    description
-    image
-    price
-    stock
-    nutrition {
-      calories
-      totalFat
-      sodium
-      totalCarbs
-      protein
+  query products {
+    products {
+      _id
+      name
+      description
+      image
+      price
+      stock
+      ingredients
+      nutrition {
+        calories
+        totalFat
+        sodium
+        totalCarbs
+        protein
+      }
     }
-    ingredients
   }
-}
 `;
 
 export const QUERY_PRODUCT = gql`

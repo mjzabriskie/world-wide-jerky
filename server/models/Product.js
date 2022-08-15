@@ -18,7 +18,7 @@ const productSchema = new Schema(
       maxlength: 1500
     },
     image: {
-      type: String
+      type: [String]
     },
     price: {
       type: String,
