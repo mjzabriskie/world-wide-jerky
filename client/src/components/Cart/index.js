@@ -41,7 +41,7 @@ const Cart = () => {
   function calculateTotal() {
     let sum = 0;
     state.cart.forEach(item => {
-      sum += item.price * item.purchaseQuantity;
+      sum += item.price * item.purchaseQuantity / 100;
     });
     return sum.toFixed(2);
   };
@@ -70,15 +70,17 @@ const Cart = () => {
 
   return (
     <div className="cart backPrimary">
-      <div className="close" onClick={toggleCart}>[Close]</div>
+      <div className="close" onClick={toggleCart}>
+        <button type="button" className="btn-close" aria-label="Close"></button>
+      </div>
       <h2>Shopping Cart</h2>
       {state.cart.length ? (
         <div>
-          {state.cart.map(item => (
-            <CartItem key={item._id} item={item} />
+          {state.cart.map(product => (
+            <CartItem key={product._id} product={product} />
           ))}
 
-          <div className="flex-row space-between">
+          <div className="d-flex justify-content-between">
             <strong>Total: ${calculateTotal()}</strong>
 
             {
