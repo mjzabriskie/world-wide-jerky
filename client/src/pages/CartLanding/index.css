@@ -22,7 +22,7 @@
     border-top-left-radius: 1rem;
 }
 @media(max-width:767px){
-    #cart{
+    .cart-2{
         padding: 4vh;
         border-bottom-left-radius: unset;
         border-top-right-radius: 1rem;
