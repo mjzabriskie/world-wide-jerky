@@ -4,8 +4,9 @@ import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
 import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
+import { ADD_TO_CART, UPDATE_CART_QUANTITY, TOGGLE_LOGIN } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import Auth from '../../utils/auth';
 
 const ProductModal = (product) => {
   const [state, dispatch] = useStoreContext();
@@ -29,7 +30,15 @@ const ProductModal = (product) => {
 
   const images = image;
 
+  function toggleLogin() {
+    dispatch({ type: TOGGLE_LOGIN });
+  }
+
   const addToCart = () => {
+    if (!Auth.loggedIn()) {
+      toggleLogin();
+      return;
+    }
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
     if (itemInCart) {
       dispatch({
