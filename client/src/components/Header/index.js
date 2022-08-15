@@ -1,14 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Auth from "../../utils/auth";
 import Modal from 'react-bootstrap/Modal';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
+import { QUERY_USER } from "../../utils/queries";
 
 const Header = (props) => {
   const [formState, setFormState] = useState({ username: "", email: "", password: "" });
   const [login, { loginError }] = useMutation(LOGIN_USER);
   const [addUser, { singupError }] = useMutation(ADD_USER);
+
+  const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: userParam }
+  });
+
+  const user = data?.user || {};
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -85,7 +94,7 @@ const Header = (props) => {
           <Link className="text-decoration-none px-2" to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
-              <Link className="text-decoration-none px-2" to="/profile">Me</Link>
+              <Link className="text-decoration-none px-2" to="/profile">Profile</Link>
               <a className="text-decoration-none px-2" href="/" onClick={logout}>Logout</a>
             </>
           ) : (

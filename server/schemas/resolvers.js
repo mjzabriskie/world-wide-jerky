@@ -13,19 +13,18 @@ const resolvers = {
         return userData;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in me");
     },
-    user: async (parent, { username }, context) => {
-      if (context.user) {
-        return User.findOne({ username }).select("-__v -password");
-      }
-      throw new AuthenticationError("Not logged in");
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).select("-__v -password");
+
+      throw new AuthenticationError("Not logged in user");
     },
     users: async () => {
       if (context.user) {
         return User.find();
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in users");
     },
     products: async () => {
       return Product.find();
