@@ -37,6 +37,11 @@ const resolvers = {
 
       return { token, user };
     },
+    updateUser: async (parent, args) => {
+      const user = await User.updateOne(args);
+
+      return { user };
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

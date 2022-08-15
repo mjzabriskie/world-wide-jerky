@@ -40,3 +40,12 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation updateUser($admin: Boolean!) {
+    updateUser(admin: $admin) {
+      email
+      admin
+    }
+  }
+`;

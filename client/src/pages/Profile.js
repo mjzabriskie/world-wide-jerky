@@ -39,16 +39,15 @@ const Profile = (props) => {
   return (
     <Container>
       <Row>
-        <Col sm={4}> 
+        <Col sm={4} className="border border-dark p-2">
+          <h2>{user.username}'s Profile</h2>
           <ul>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
             <li>Button to change password?</li>
             <li>IF ADMIN, button that pulls up page to search users and change admin</li>
             <li>IF ADMIN, button that changes page on right to add a product</li>
           </ul>
         </Col>
-        <Col sm={8}>
+        <Col sm={8} className="border border-dark p-2">
           This shows order history by default, if buttons are clicked will change to update password, change admit, or add product. These will probably be components!
         </Col>
       </Row>

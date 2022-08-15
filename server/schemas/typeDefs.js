@@ -30,6 +30,10 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+  type Update {
+    email: String
+    admin: Boolean
+  }
   type Checkout {
     session: ID
   }
@@ -43,6 +47,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    updateUser(admin: Boolean!): Update
     addProduct(name: String!, price: String!, stock: String!, description: String, image: String, ingredients: [String]): Product
     addNutrition(productId: ID!, calories: String, totalFat: String, sodium: String, totalCarbs: String, protein: String): Product
   }

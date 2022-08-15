@@ -181,8 +181,6 @@ const Header = (props) => {
                   {singupError && <div>Sign up failed</div>}
                 </Modal.Body>
               </Modal>
-              {/* <Link className="text-decoration-none px-2" to="/login">Login</Link> */}
-              {/* <Link className="text-decoration-none px-2" to="/signup">Signup</Link> */}
             </>
           )}
         </div>
