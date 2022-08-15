@@ -90,8 +90,8 @@ const Header = (props) => {
         </Link>
 
         <div className="d-flex flex-row text-center mx-5 px-5">
-          <Link className="text-decoration-none px-2" to="/productlist">Store</Link>
-          <Link className="text-decoration-none px-2" to="/contact">Contact Us</Link>
+          <Link className='text-decoration-none backPrimary btnForm px-4' to="/productlist">Store</Link>
+          <Link className='text-decoration-none backPrimary btnForm px-4' to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
               <Link className="text-decoration-none px-2" to="/profile">Profile</Link>
