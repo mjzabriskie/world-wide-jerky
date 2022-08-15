@@ -81,6 +81,7 @@ const Header = (props) => {
         </Link>
 
         <div className="d-flex flex-row text-center mx-5 px-5">
+          <Link className="text-decoration-none px-2" to="/productlist">Store</Link>
           <Link className="text-decoration-none px-2" to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
