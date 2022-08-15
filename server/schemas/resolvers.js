@@ -88,8 +88,17 @@ const resolvers = {
 
       return { token, user };
     },
-    updateUser: async (parent, args) => {
-      const user = await User.updateOne(args);
+    updateUser: async (parent, { email }) => {
+      const user = await User.findOneAndUpdate({
+        where: {
+          email: email
+        },
+        plain: true
+      });
+
+      if (!user) throw new Error("No user found with that email.");
+
+      
 
       return { user };
     },
