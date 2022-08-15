@@ -1,21 +1,24 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_PRODUCTS = gql`
-  query thoughts($username: String) {
-    thoughts(username: $username) {
-      _id
-      thoughtText
-      createdAt
-      username
-      reactionCount
-      reactions {
-        _id
-        createdAt
-        username
-        reactionBody
-      }
+query products {
+  products {
+    _id
+    name
+    description
+    image
+    price
+    stock
+    nutrition {
+      calories
+      totalFat
+      sodium
+      totalCarbs
+      protein
     }
+    ingredients
   }
+}
 `;
 
 export const QUERY_PRODUCT = gql`
@@ -42,17 +45,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      friendCount
-      friends {
-        _id
-        username
-      }
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
-      }
+      admin
     }
   }
 `;

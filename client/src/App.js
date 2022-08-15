@@ -8,13 +8,12 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
 
-import About from "./pages/About";
 import Contact from "./pages/Contact";
 import CartPage from "./pages/CartLanding/CartPage";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import SingleProduct from "./pages/SingleProduct";
-//import Profile from "./pages/Profile";
+import ProductList from './pages/ProductList';
 import Signup from "./pages/Signup";
 
 import Header from "./components/Header";
@@ -49,7 +48,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div className="d-flex flex-column min-vh-100">
           <StoreProvider>
             <Header />
             <div className="container">
@@ -57,13 +56,9 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/about" element={<About />} />
-                {/* <Route path="/profile">
-                <Route path=":username" element={<Profile />} />
-                <Route path="" element={<Profile />} />
-              </Route> */}
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/cartpage" element={<CartPage />} />
+                <Route path="/productlist" element={<ProductList />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
                 <Route path="*" element={<NoMatch />} />
               </Routes>
