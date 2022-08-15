@@ -9,6 +9,7 @@ const typeDefs = gql`
     email: String
     admin: Boolean
   }
+
   type Product {
     _id: ID
     name: String
@@ -19,6 +20,13 @@ const typeDefs = gql`
     nutrition: [Nutrition]
     ingredients: [String]
   }
+
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
+
   type Nutrition {
     calories: String
     totalFat: String
@@ -26,6 +34,7 @@ const typeDefs = gql`
     totalCarbs: String
     protein: String
   }
+
   type Auth {
     token: ID!
     user: User
@@ -41,15 +50,18 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
     products: [Product]
   }
+
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(admin: Boolean!): Update
     addProduct(name: String!, price: String!, stock: String!, description: String, image: String, ingredients: [String]): Product
     addNutrition(productId: ID!, calories: String, totalFat: String, sodium: String, totalCarbs: String, protein: String): Product
+    addOrder(products: [ID]!): Order
   }
 `;
 
