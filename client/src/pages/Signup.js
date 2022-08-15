@@ -10,7 +10,7 @@ const Signup = () => {
     password: "",
   });
 
-  const [addUser, {error}] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -25,6 +25,7 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log({ ...formState });
 
     try {
       const { data } = await addUser({

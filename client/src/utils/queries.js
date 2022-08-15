@@ -17,8 +17,10 @@ export const QUERY_PRODUCTS = gql`
         totalCarbs
         protein
       }
+
     }
   }
+}
 `;
 
 export const QUERY_PRODUCT = gql`
