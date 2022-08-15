@@ -121,15 +121,15 @@ hr{
     color: white;
     -webkit-box-shadow: none;
     -webkit-user-select: none;
-        user-select: none;
-    transition: none; 
+    user-select: none;
+    transition: none;
 }
 .checkoutbtn:hover{
     color: white;
     background-color: green;
 }
 .exit-cart{
-    color: black; 
+    color: black;
 }
 .exit-cart:hover{
     color: black;
@@ -140,4 +140,8 @@ hr{
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center;
+}
+
+.btn-products {
+    width: 100px;
 }
