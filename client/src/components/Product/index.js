@@ -112,7 +112,7 @@ const ProductModal = (product) => {
             variant="dark"
             className="btn-products"
             onClick={() => {
-              handleClose();
+              addToCart();
             }}
           >
             Add to Cart
