@@ -7,7 +7,6 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 const Profile = (props) => {
   const { username: userParam } = useParams();
-  console.log(useParams())
 
   // useMutation will be used to change passwords and update admin status
 
@@ -15,14 +14,14 @@ const Profile = (props) => {
     variables: { username: userParam }
   });
 
-  const user = data?.user || {};
+  const user = data?.me || data?.user || {};
 
-  console.log(data)
+  console.log(user)
 
-  //navigate to personal profile page if username is the logged in user's
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile:username" />
+    return <Navigate to="/profile:username" />;
   }
+
 
   if (loading) {
     return <div>Loading...</div>;

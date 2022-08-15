@@ -94,7 +94,7 @@ const Header = (props) => {
           <Link className="text-decoration-none px-2" to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
-              <Link className="text-decoration-none px-2" to="/profile/:username">Profile</Link>
+              <Link className="text-decoration-none px-2" to="/profile">Profile</Link>
               <a className="text-decoration-none px-2" href="/" onClick={logout}>Logout</a>
             </>
           ) : (
