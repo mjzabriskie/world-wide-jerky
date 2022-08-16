@@ -66,7 +66,7 @@ function CartPage(product) {
     }
 
     return (
-        <div className='container'>
+        <div className='container my-4'>
             <div className="mt-2 mb-2 rounded" id="card">
                 <div className="row m-0">
                     <div className="col-md-8 cart-2">

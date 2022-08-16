@@ -25,7 +25,7 @@ function Contact() {
     };
 
     return (
-        <div className="container">
+        <div className="container my-4">
             <div className="mt-2 mb-2 rounded w-90 mx-auto" id="contact">
                 <div className="row m-0">
                     <div className="col-md-8 mx-auto contact-2">
@@ -37,7 +37,7 @@ function Contact() {
                             <input className="form-control rounded" type="email" name="email" required />
                             <label htmlFor="message">Message</label>
                             <textarea rows='8' className="form-control rounded" type="text" name="message" required />
-                            <button className="btn btnForm rounded my-1" type="submit">Send Email</button>
+                            <button className="btn btnForm rounded my-1" type="submit">SEND EMAIL</button>
                         </form>
                     </div>
                 </div>

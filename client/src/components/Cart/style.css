@@ -43,7 +43,7 @@
 
 .cart-closed {
   position: fixed;
-  top: 2%;
+  top: 8%;
   right: 1%;
   font-size: 2rem;
   cursor: pointer;
@@ -58,6 +58,12 @@
 @media screen and (max-width: 768px) {
   .cart {
     max-width: 75%;
+  }
+
+  .cart-closed {
+    top: 2%;
+    right: 3%;
+    font-size: 2rem;
   }
 }
 

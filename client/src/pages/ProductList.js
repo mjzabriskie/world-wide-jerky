@@ -13,7 +13,7 @@ const ProductList = () => {
   return (
     <main>
       <h1 className="text-center mt-5 mx-auto w-50 pb-4 border-bottom border-3 border-black">Shop</h1>
-      <div className="container d-flex flex-wrap justify-content-center">
+      <div className="container d-flex flex-wrap justify-content-center mb-4">
         {loading ? (
           <div>Loading...</div>
         ) : (

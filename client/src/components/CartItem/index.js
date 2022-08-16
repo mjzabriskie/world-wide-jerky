@@ -45,9 +45,15 @@ const Cartproduct = ({ product }) => {
         />
       </div>
       <div>
-        <div>{product.name}, ${(product.price / 100).toFixed(2)}</div>
         <div>
-          <span>Qty:</span>
+          <p className='m-0'>
+            {product.name}, ${(product.price / 100).toFixed(2)}
+          </p>
+        </div>
+        <div>
+          <span className='p'>
+            Qty:
+          </span>
           <input
             type="number"
             className='rounded text-center w-25 mx-1'
