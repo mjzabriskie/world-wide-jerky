@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Navigate, useParams } from "react-router-dom";
 import Auth from "../utils/auth";
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { QUERY_USER, QUERY_ME, UPDATE_USER } from "../utils/queries";
 
 const Profile = (props) => {
   const { username: userParam } = useParams();

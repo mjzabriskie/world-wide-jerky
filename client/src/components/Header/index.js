@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Auth from "../../utils/auth";
 import Modal from 'react-bootstrap/Modal';
 import { useMutation, useQuery } from '@apollo/client';
@@ -16,7 +16,7 @@ const Header = (props) => {
     password: "",
   });
   const [login, { loginError }] = useMutation(LOGIN_USER);
-  const [addUser, { singupError }] = useMutation(ADD_USER);
+  const [addUser, { signupError }] = useMutation(ADD_USER);
 
   const { username: userParam } = useParams();
 
@@ -218,7 +218,7 @@ const Header = (props) => {
                       Submit
                     </button>
                   </form>
-                  {singupError && <div>Sign up failed</div>}
+                  {signupError && <div>Sign up failed</div>}
                 </Modal.Body>
               </Modal>
             </>

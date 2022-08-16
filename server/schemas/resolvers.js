@@ -21,7 +21,7 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in user");
     },
-    users: async () => {
+    users: async (parent, args, context) => {
       if (context.user) {
         return User.find();
       }
@@ -90,13 +90,13 @@ const resolvers = {
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
-        await User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           {email: context.user.email},
           { $push: {admin: context.user.admin} },
           { new: true }
         );
 
-        return { user }
+        return { updatedUser }
       }
       // probably want an error
     },
