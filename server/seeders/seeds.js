@@ -26,7 +26,7 @@ db.once("open", async () => {
   const oldWorld = {
     name: "Old World",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo eget velit eleifend posuere id et nibh. Fusce egestas molestie mauris, at eleifend.",
+      "Old World Beef Jerky brings back the flavor and smoky goodness from a bygone era. World Wide Old World Beef Jerky is marinated, smoked and cooked with modern equipment but brings back the flavor of the Old World smoke meats.  Enjoy.",
     image: [
       "/images/old-world.jpeg",
       "/images/old-world-nutrition.jpeg",
@@ -45,7 +45,7 @@ db.once("open", async () => {
   const pepper = {
     name: "Pepper",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo eget velit eleifend posuere id et nibh. Fusce egestas molestie mauris, at eleifend.",
+      "Pepper Beef Jerky has a history that is thousands of years old.  Pepper cultivation began many, many years ago in India, where it is native.  Pepper is one of the most sought after spices in all the world.",
     image: [
       "/images/pepper.jpeg",
       "/images/pepper-nutrition.jpeg",
@@ -64,7 +64,7 @@ db.once("open", async () => {
   const sweetSpicy = {
     name: "Sweet & Spicy",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo eget velit eleifend posuere id et nibh. Fusce egestas molestie mauris, at eleifend.",
+      "Sweet and Spicy beef jerky has just the right amount of spiciness due to the crushed red peppers that are in the marinade.  The peppers are red chili peppers which were first found in Central and South America and have been harvested for use since about 7,500 BC.",
     image: [
       "/images/sweet-spicy.jpeg",
       "/images/sweet-spicy-nutrition.jpeg",
@@ -83,7 +83,7 @@ db.once("open", async () => {
   const teriyaki = {
     name: "Teriyaki",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo eget velit eleifend posuere id et nibh. Fusce egestas molestie mauris, at eleifend.",
+      "Teriyaki beef jerky has its origins in Japan.  The name refers to a method of cooking as does yakitori and sukyaki.  In all three, the yaki refers to the product being grilled.  The flavor of teriyaki can be traced back to Japanese immigrants who settled in Hawaii.",
     image: [
       "/images/teriyaki.jpeg",
       "/images/teriyaki-nutrition.jpeg",
@@ -102,7 +102,7 @@ db.once("open", async () => {
   const fourPack = {
     name: "Four-pack Combo",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo eget velit eleifend posuere id et nibh. Fusce egestas molestie mauris, at eleifend.",
+      "Can't decide on just one? Try all of our delicious flavors!",
     image: [
       "/images/four-pack.jpeg",
       "/images/old-world.jpeg",
