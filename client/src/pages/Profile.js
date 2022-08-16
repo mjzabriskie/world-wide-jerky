@@ -41,6 +41,18 @@ const Profile = (props) => {
       <Row>
         <Col sm={4} className="border border-dark p-2">
           <h2>{user.username}'s Profile</h2>
+          <div>
+            <button>Update Password</button>
+            {/* Not functional */}
+            {Auth.admin() ? (
+              <>
+              <button>Update User Admin</button>
+              <button>Add a Product</button>
+              </>
+            ) : (
+              <button>Order History</button>
+            )}
+          </div>
           <ul>
             <li>Button to change password?</li>
             <li>IF ADMIN, button that pulls up page to search users and change admin</li>
