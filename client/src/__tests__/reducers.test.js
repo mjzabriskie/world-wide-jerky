@@ -6,7 +6,9 @@ import {
   REMOVE_FROM_CART,
   ADD_MULTIPLE_TO_CART,
   CLEAR_CART,
-  TOGGLE_CART
+  TOGGLE_CART,
+  TOGGLE_LOGIN,
+  TOGGLE_SIGNUP
 } from '../utils/actions';
 
 const initialState = {
@@ -24,8 +26,8 @@ const initialState = {
     }
   ],
   cartOpen: false,
-  categories: [{ name: 'Food' }],
-  currentCategory: '1',
+  loginOpen: false,
+  signupOpen: false,
 };
 
 test('UPDATE_PRODUCTS', () => {
@@ -115,4 +117,34 @@ test('TOGGLE_CART', () => {
   });
 
   expect(newState2.cartOpen).toBe(false);
+});
+
+test('TOGGLE_LOGIN', () => {
+  let newState = reducer(initialState, {
+    type: TOGGLE_LOGIN
+  });
+
+  expect(newState.loginOpen).toBe(true);
+  expect(initialState.loginOpen).toBe(false);
+
+  let newState2 = reducer(newState, {
+    type: TOGGLE_LOGIN
+  });
+
+  expect(newState2.loginOpen).toBe(false);
+});
+
+test('TOGGLE_SIGNUP', () => {
+  let newState = reducer(initialState, {
+    type: TOGGLE_SIGNUP
+  });
+
+  expect(newState.signupOpen).toBe(true);
+  expect(initialState.signupOpen).toBe(false);
+
+  let newState2 = reducer(newState, {
+    type: TOGGLE_SIGNUP
+  });
+
+  expect(newState2.signupOpen).toBe(false);
 });

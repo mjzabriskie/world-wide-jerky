@@ -6,7 +6,9 @@ import {
   REMOVE_FROM_CART,
   ADD_MULTIPLE_TO_CART,
   CLEAR_CART,
-  TOGGLE_CART
+  TOGGLE_CART,
+  TOGGLE_LOGIN,
+  TOGGLE_SIGNUP
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -68,6 +70,18 @@ export const reducer = (state, action) => {
         ...state,
         cartOpen: !state.cartOpen
       };
+
+    case TOGGLE_LOGIN:
+      return {
+        ...state,
+        loginOpen: !state.loginOpen
+      };
+
+    case TOGGLE_SIGNUP:
+      return {
+        ...state,
+        signupOpen: !state.signupOpen
+      }
 
     default:
       return state;
