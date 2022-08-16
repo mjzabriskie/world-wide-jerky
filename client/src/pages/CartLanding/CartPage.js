@@ -12,7 +12,7 @@ import { useLazyQuery } from '@apollo/client';
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 
-function CartPage(item) {
+function CartPage(product) {
     const [state, dispatch] = useStoreContext();
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -37,8 +37,8 @@ function CartPage(item) {
 
     function calculateTotal() {
         let sum = 0;
-        state.cart.forEach(item => {
-            sum += item.price * item.purchaseQuantity;
+        state.cart.forEach(product => {
+            sum += product.price * product.purchaseQuantity / 100;
         });
         return sum.toFixed(2);
     }
@@ -46,15 +46,23 @@ function CartPage(item) {
     function submitCheckout() {
         const productIds = [];
 
-        state.cart.forEach((item) => {
-            for (let i = 0; i < item.purchaseQuantity; i++) {
-                productIds.push(item._id);
+        state.cart.forEach((product) => {
+            for (let i = 0; i < product.purchaseQuantity; i++) {
+                productIds.push(product._id);
             }
         });
 
         getCheckout({
             variables: { products: productIds}
         });
+    }
+
+    function productQuantity() {
+        let sum = 0;
+        state.cart.forEach((product) => {
+            sum += product.purchaseQuantity;
+        })
+        return sum + ' Items';
     }
 
     return (
@@ -66,13 +74,13 @@ function CartPage(item) {
                             <div className="col">
                                 <h3>Shopping Cart</h3>
                             </div>
-                            <div className="col align-self-center text-end text-muted"> 2 items</div>
+                            <div className="col align-self-center text-end text-muted"> {productQuantity()}</div>
                         </div>
                     </div>
                     {state.cart.length ? (
                         <div>
-                            {state.cart.map(item => (
-                                <CartPageItem key={item._id} item={item} />
+                            {state.cart.map(product => (
+                                <CartPageItem key={product._id} product={product} />
                             ))}
                         </div>
 
@@ -89,8 +97,8 @@ function CartPage(item) {
                     <div><h5 className="summary-header"><b>Summary</b></h5></div>
                     <hr/>
                     <div className="row m-0">
-                        <div className="col" style={{ paddingLeft: "0px" }}>ITEMS 3</div>
-                        <div className="col text-right">&#36; 132.00</div>
+                        <div className="col" style={{ paddingLeft: "0px" }}>{productQuantity()}</div>
+                        <div className="col text-right">&#36; {calculateTotal()}</div>
                     </div>
                     <form className="cart-form">
                         <p>SHIPPING</p>
@@ -99,7 +107,7 @@ function CartPage(item) {
                         <input className="codeInput" id="code" placeholder="Enter your code" />
                     </form>
                     <div className="row m-0" style={{ borderTop: "1px solid rgba(0,0,0,.1)", padding: "2vh 0" }}>
-                        <div className="col">TOTAL PRICE</div>
+                        <div className="col">SUB-TOTAL</div>
                         <div className="col text-right">&#36; {calculateTotal()}</div>
                     </div>
                     {
