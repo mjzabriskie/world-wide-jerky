@@ -136,15 +136,13 @@ const resolvers = {
       return { token, user };
     },
     updateUser: async (parent, args, context) => {
-      if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
-          {email: context.user.email},
-          { $push: {admin: context.user.admin} },
+          {email: args.email},
+          {admin: args.admin},
           { new: true }
         );
 
-        return { updatedUser }
-      }
+        return updatedUser;
       // probably want an error
     },
     login: async (parent, { email, password }) => {

@@ -55,7 +55,8 @@ class AuthService {
         // use type coersion to check if the token is NOT undefined and the token is NOT expired.
         try {
             const decoded = decode(token)
-            if (decoded.admin === 'true') {
+            console.log(decoded);
+            if (token.admin === 'true') {
                 return true;
             } else {
                 return false;
