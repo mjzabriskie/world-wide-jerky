@@ -45,7 +45,7 @@ const Cartproduct = ({ product }) => {
         />
       </div>
       <div>
-        <div>{product.name}, ${product.price / 100}</div>
+        <div>{product.name}, ${(product.price / 100).toFixed(2)}</div>
         <div>
           <span>Qty:</span>
           <input
