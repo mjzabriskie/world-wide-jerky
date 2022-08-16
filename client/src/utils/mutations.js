@@ -42,7 +42,7 @@ export const ADD_PRODUCT = gql`
 `;
 
 export const UPDATE_USER = gql`
-  mutation updateUser($email: String!, $admin: String!) {
+  mutation updateUser($email: String!, $admin: Boolean!) {
     updateUser(email: $email, admin: $admin) {
       token
       user {
