@@ -61,9 +61,9 @@ const ProductModal = (product) => {
 
   return (
     <>
-      <Card className="m-2 shadow" style={{ width: "18rem" }}>
+      <Card className="m-2 shadow rounded" style={{ width: "18rem" }}>
         <Card.Img
-          className="pointer"
+          className="pointer rounded-top"
           variant="top"
           src={image[0]}
           alt={name}
@@ -78,15 +78,14 @@ const ProductModal = (product) => {
             {name}
           </Card.Title>
           {/* <Card.Text>{description}</Card.Text> */}
-          <div className="d-flex justify-content-around">
+          <div className="d-flex flex-column">
             <Button
-              className="btn-products"
-              variant="primary"
+              className="btn btnFormReverse rounded w-100 my-1"
               onClick={handleShow}
             >
               More Info
             </Button>
-            <Button className="btn-products" variant="primary" onClick={addToCart}>
+            <Button className="btn btnForm rounded w-100 my-1" onClick={addToCart}>
               Add to Cart
             </Button>
           </div>
@@ -107,10 +106,9 @@ const ProductModal = (product) => {
           </Carousel>
           <p className="p-2">{description}</p>
         </Modal.Body>
-        <Modal.Footer className="justify-content-center">
+        <Modal.Footer className="d-flex flex-column">
           <Button
-            variant="dark"
-            className="btn-products"
+            className="btn btnFormReverse rounded w-100 my-1"
             onClick={() => {
               handleClose();
             }}
@@ -118,8 +116,7 @@ const ProductModal = (product) => {
             Close
           </Button>
           <Button
-            variant="dark"
-            className="btn-products"
+            className="btn btnForm rounded w-100 my-1"
             onClick={() => {
               addToCart();
             }}

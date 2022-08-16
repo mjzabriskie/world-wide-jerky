@@ -7,7 +7,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -51,9 +51,31 @@ code {
   color: var(--quatrinary);
 }
 
-.btnForm {
+.rounded {
+  border-radius: 20px !important;
+}
+
+.rounded-top {
+  border-radius: 20px 20px 0px 0px !important;
+}
+
+.btn {
+  border: 1px solid black !important;
+}
+
+.btnForm,
+.btnFormReverse:hover,
+.btn:focus {
   border: none;
-  outline: none;
+  background-color: black;
+  color: white;
+}
+
+.btnFormReverse,
+.btnForm:hover,
+.btn:focus.btnFormReverse:focus {
+  background-color: white;
+  color: black;
 }
 
 .pointer {

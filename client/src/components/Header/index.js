@@ -99,28 +99,28 @@ const Header = (props) => {
   }, [state, dispatch]);
 
   return (
-    <header className="d-flex flex-wrap justify-content-center w-100">
+    <header className="">
       <div className="navbar backPrimary w-100">
-        <Link className="navbar-brand text-decoration-none px-5" to="/">
-          <h1 className="secondary font-weight-bold mx-5 px-5">
+        <Link className="navbar-brand text-decoration-none" to="/">
+          <h1 className="secondary font-weight-bold mx-5">
             World Wide Jerky
           </h1>
         </Link>
 
-        <div className="d-flex flex-row text-center mx-5 px-5">
-          <Link className="btn btnForm text-decoration-none px-4" to="/productlist">Store</Link>
-          <Link className="btn btnForm text-decoration-none px-4" to="/contact">Contact Us</Link>
+        <div className="d-flex flex-row text-center mx-5">
+          <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/productlist">Store</Link>
+          <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btnForm text-decoration-none px-4" to="/profile">Me</Link>
-              <a className="btn btnForm text-decoration-none px-4" href="/" onClick={logout}>Logout</a>
+              <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/profile">Me</Link>
+              <a className="btn btnForm rounded text-decoration-none px-4 mx-1" href="/" onClick={logout}>Logout</a>
             </>
           ) : (
             <>
               {/* Login Modal */}
               <button
                 onClick={toggleLogin}
-                className="text-decoration-none backPrimary btnForm px-4"
+                className="btn btnForm rounded text-decoration-none backPrimary px-4 mx-1"
               >
                 Login
               </button>
@@ -130,11 +130,11 @@ const Header = (props) => {
                   <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <button className="btn d-block w-100" onClick={toggleModals}>Signup Instead</button>
+                  <button className="btn btnFormReverse rounded d-block w-100" onClick={toggleModals}>Signup Instead</button>
                   <form onSubmit={handleLoginFormSubmit}>
                     <label htmlFor="email">Email</label>
                     <input
-                      className="form-control"
+                      className="form-control rounded"
                       placeholder="Your email"
                       name="email"
                       type="email"
@@ -144,7 +144,7 @@ const Header = (props) => {
                     />
                     <label htmlFor="password">Password</label>
                     <input
-                      className="form-control"
+                      className="form-control rounded"
                       placeholder="******"
                       name="password"
                       type="password"
@@ -152,7 +152,7 @@ const Header = (props) => {
                       value={formState.password}
                       onChange={handleChange}
                     />
-                    <button className="btn d-block w-100" type="submit">
+                    <button className="btn btnForm rounded d-block w-100" type="submit">
                       Submit
                     </button>
                   </form>
@@ -163,7 +163,7 @@ const Header = (props) => {
               {/* Signup Modal */}
               <button
                 onClick={toggleSignup}
-                className="text-decoration-none backPrimary btnForm px-4"
+                className="btn btnForm rounded text-decoration-none backPrimary px-4 mx-1"
               >
                 Sign Up
               </button>
@@ -173,11 +173,11 @@ const Header = (props) => {
                   <Modal.Title>Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <button className="btn d-block w-100" onClick={toggleModals}>Login Instead</button>
+                  <button className="btn btnFormReverse rounded d-block w-100" onClick={toggleModals}>Login Instead</button>
                   <form onSubmit={handleSignupFormSubmit}>
                     <label htmlFor="username">Username</label>
                     <input
-                      className="form-control"
+                      className="form-control rounded"
                       placeholder="Your username"
                       name="username"
                       type="username"
@@ -187,7 +187,7 @@ const Header = (props) => {
                     />
                     <label htmlFor="email">Email</label>
                     <input
-                      className="form-control"
+                      className="form-control rounded"
                       placeholder="Your email"
                       name="email"
                       type="email"
@@ -197,7 +197,7 @@ const Header = (props) => {
                     />
                     <label htmlFor="password">Password</label>
                     <input
-                      className="form-control"
+                      className="form-control rounded"
                       placeholder="******"
                       name="password"
                       type="password"
@@ -205,7 +205,7 @@ const Header = (props) => {
                       value={formState.password}
                       onChange={handleChange}
                     />
-                    <button className="btn d-block w-100" type="submit">
+                    <button className="btn btnForm rounded d-block w-100" type="submit">
                       Submit
                     </button>
                   </form>
