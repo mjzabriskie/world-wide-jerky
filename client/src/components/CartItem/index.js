@@ -45,21 +45,29 @@ const Cartproduct = ({ product }) => {
         />
       </div>
       <div>
-        <div>{product.name}, ${product.price / 100}</div>
         <div>
-          <span>Qty:</span>
+          <p className='m-0'>
+            {product.name}, ${(product.price / 100).toFixed(2)}
+          </p>
+        </div>
+        <div>
+          <span className='p'>
+            Qty:
+          </span>
           <input
             type="number"
+            className='rounded text-center w-25 mx-1'
             placeholder="1"
             value={product.purchaseQuantity}
             onChange={onChange}
           />
           <span
+            className='pointer'
             role="img"
             aria-label="trash"
             onClick={() => removeFromCart(product)}
           >
-            🗑️
+            &#10005;
           </span>
         </div>
       </div>

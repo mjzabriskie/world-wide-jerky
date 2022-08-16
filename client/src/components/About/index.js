@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
     return (
-        <div>
+        <div className="mb-4">
             <h2>About Us</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a lacus ac velit malesuada mattis vitae vel lacus. Nulla pulvinar pretium quam, sit amet euismod massa interdum quis. Proin scelerisque porta leo nec tempus. Praesent dictum leo hendrerit porta malesuada. Sed vel posuere arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque id libero sed massa aliquet eleifend. Fusce condimentum vehicula dictum. Nunc at dignissim dolor. Curabitur pharetra consectetur suscipit. In hac habitasse platea dictumst. Duis sodales luctus arcu ut dictum. Ut sodales elit ligula, consequat iaculis lorem blandit blandit. Suspendisse potenti. Fusce semper nunc eget molestie ornare. Quisque at quam nec neque dapibus viverra vehicula et elit.

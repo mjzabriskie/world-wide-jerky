@@ -1,0 +1,29 @@
+.title {
+    margin-bottom: 5vh;
+}
+
+#contact {
+    margin: auto;
+    max-width: 100%;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: transparent;
+    background-color: var(--secondary);
+}
+
+@media(max-width:767px) {
+    #contact {
+        margin: 3vh auto;
+    }
+}
+
+.contact-2 {
+    background-color: #fff;
+    padding: 4vh 5vh;
+}
+
+@media(max-width:767px) {
+    .contact-2 {
+        padding: 4vh;
+    }
+}
