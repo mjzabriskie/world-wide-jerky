@@ -32,7 +32,7 @@ const CarouselComponent = () => {
     }, [data, loading, dispatch]);
 
     return (
-        <Carousel>
+        <Carousel fade>
             {loading ? <h2>Loading...</h2>
                 :
                 state.products.map((product, index) => (
