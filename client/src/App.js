@@ -22,8 +22,6 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 
 import { StoreProvider } from "./utils/GlobalState";
-import Auth from "./utils/auth";
-import Cart from "./components/Cart";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -64,7 +62,6 @@ function App() {
               </Routes>
             </div>
             <Footer />
-            {Auth.loggedIn() && <Cart />}
           </StoreProvider>
         </div>
       </Router>
