@@ -88,19 +88,17 @@ const resolvers = {
 
       return { token, user };
     },
-    updateUser: async (parent, { email }) => {
-      const user = await User.findOneAndUpdate({
-        where: {
-          email: email
-        },
-        plain: true
-      });
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        await User.findOneAndUpdate(
+          {email: context.user.email},
+          { $push: {admin: context.user.admin} },
+          { new: true }
+        );
 
-      if (!user) throw new Error("No user found with that email.");
-
-      
-
-      return { user };
+        return { user }
+      }
+      // probably want an error
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
