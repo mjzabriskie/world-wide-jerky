@@ -108,21 +108,21 @@ const Header = (props) => {
         </Link>
 
         <div className="d-flex flex-row text-center mx-5">
-          <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/productlist">Store</Link>
-          <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/contact">Contact Us</Link>
+          <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/productlist">STORE</Link>
+          <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/contact">CONTACT US</Link>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/profile">Me</Link>
-              <a className="btn btnForm rounded text-decoration-none px-4 mx-1" href="/" onClick={logout}>Logout</a>
+              <Link className="btn btnForm rounded text-decoration-none px-4 mx-1" to="/profile">ME</Link>
+              <a className="btn btnForm rounded text-decoration-none px-4 mx-1" href="/" onClick={logout}>LOGOUT</a>
             </>
           ) : (
             <>
               {/* Login Modal */}
               <button
                 onClick={toggleLogin}
-                className="btn btnForm rounded text-decoration-none backPrimary px-4 mx-1"
+                className="btn btnForm rounded text-decoration-none px-4 mx-1"
               >
-                Login
+                LOGIN
               </button>
 
               <Modal show={openLoginModal} onHide={toggleLogin}>
@@ -130,7 +130,7 @@ const Header = (props) => {
                   <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <button className="btn btnFormReverse rounded d-block w-100" onClick={toggleModals}>Signup Instead</button>
+                  <button className="btn btnFormReverse rounded d-block w-100 my-1" onClick={toggleModals}>SIGN UP</button>
                   <form onSubmit={handleLoginFormSubmit}>
                     <label htmlFor="email">Email</label>
                     <input
@@ -152,8 +152,8 @@ const Header = (props) => {
                       value={formState.password}
                       onChange={handleChange}
                     />
-                    <button className="btn btnForm rounded d-block w-100" type="submit">
-                      Submit
+                    <button className="btn btnForm rounded d-block w-100 my-1" type="submit">
+                      SUBMIT
                     </button>
                   </form>
                   {loginError && <div>Login failed</div>}
@@ -163,9 +163,9 @@ const Header = (props) => {
               {/* Signup Modal */}
               <button
                 onClick={toggleSignup}
-                className="btn btnForm rounded text-decoration-none backPrimary px-4 mx-1"
+                className="btn btnForm rounded text-decoration-none px-4 mx-1"
               >
-                Sign Up
+                SIGN UP
               </button>
 
               <Modal show={openSignupModal} onHide={toggleSignup}>
@@ -173,7 +173,7 @@ const Header = (props) => {
                   <Modal.Title>Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <button className="btn btnFormReverse rounded d-block w-100" onClick={toggleModals}>Login Instead</button>
+                  <button className="btn btnFormReverse rounded d-block w-100 my-1" onClick={toggleModals}>LOGIN</button>
                   <form onSubmit={handleSignupFormSubmit}>
                     <label htmlFor="username">Username</label>
                     <input
@@ -205,8 +205,8 @@ const Header = (props) => {
                       value={formState.password}
                       onChange={handleChange}
                     />
-                    <button className="btn btnForm rounded d-block w-100" type="submit">
-                      Submit
+                    <button className="btn btnForm rounded d-block w-100 my-1" type="submit">
+                      SUBMIT
                     </button>
                   </form>
                   {singupError && <div>Sign up failed</div>}

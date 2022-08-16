@@ -45,7 +45,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart backPrimary">
+    <div className="cart backPrimary rounded">
       <div className="close" onClick={toggleCart}>
         <button type="button" className="btn-close" aria-label="Close"></button>
       </div>
@@ -61,8 +61,8 @@ const Cart = () => {
 
             {
               Auth.loggedIn() ?
-                <button onClick={submitCheckout}>
-                  Checkout
+                <button className="btn btnForm rounded" onClick={submitCheckout}>
+                  CHECKOUT
                 </button>
                 :
                 <span>(Log in to check out)</span>

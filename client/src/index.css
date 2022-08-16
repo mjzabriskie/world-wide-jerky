@@ -1,8 +1,7 @@
 :root {
-  --primary: #c5b9a8;
-  --secondary: #10110d;
-  --tertiary: #82351E;
-  --quatrinary: #ac7933;
+  --primary: #f1edef;
+  --secondary: white;
+  --tertiary: black;
 }
 
 body {
@@ -12,6 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary);
 }
 
 code {
@@ -20,35 +20,13 @@ code {
 }
 
 .backPrimary {
-  background-color: var(--primary);
-}
-
-.backSecondary {
   background-color: var(--secondary);
-}
-
-.backTertiary {
-  background-color: var(--tertiary);
-}
-
-.backQuatrinary {
-  background-color: var(--quatrinary);
+  border-top: 3px solid var(--tertiary);
+  border-bottom: 3px solid var(--tertiary);
 }
 
 .primary {
   color: var(--primary);
-}
-
-.secondary {
-  color: var(--secondary);
-}
-
-.tertiary {
-  color: var(--tertiary);
-}
-
-.quatrinary {
-  color: var(--quatrinary);
 }
 
 .rounded {
@@ -60,24 +38,41 @@ code {
 }
 
 .btn {
-  border: 1px solid black !important;
+  border: 1px solid var(--tertiary) !important;
+  outline: none !important;
 }
 
 .btnForm,
 .btnFormReverse:hover,
 .btn:focus {
   border: none;
-  background-color: black;
-  color: white;
+  background-color: var(--tertiary);
+  color: var(--secondary);
 }
 
 .btnFormReverse,
 .btnForm:hover,
 .btn:focus.btnFormReverse:focus {
-  background-color: white;
-  color: black;
+  background-color: var(--secondary);
+  color: var(--tertiary);
 }
 
 .pointer {
   cursor: pointer;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.hero {
+  object-fit: cover;
+  object-position: 0% 20%;
+  background-repeat: no-repeat;
+  height: 80vh;
+  width: 100%;
+}
+
+.border-black {
+  border-color: var(--tertiary) !important;
 }

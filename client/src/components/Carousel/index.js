@@ -32,7 +32,7 @@ const CarouselComponent = () => {
     }, [data, loading, dispatch]);
 
     return (
-        <Carousel>
+        <Carousel className="mb-4">
             {loading ? <h2>Loading...</h2>
                 :
                 state.products.map((product, index) => (

@@ -61,7 +61,7 @@ const ProductModal = (product) => {
 
   return (
     <>
-      <Card className="m-2 shadow rounded" style={{ width: "18rem" }}>
+      <Card className="m-4 shadow rounded" style={{ width: "18rem" }}>
         <Card.Img
           className="pointer rounded-top"
           variant="top"
@@ -83,10 +83,10 @@ const ProductModal = (product) => {
               className="btn btnFormReverse rounded w-100 my-1"
               onClick={handleShow}
             >
-              More Info
+              MORE INFO
             </Button>
             <Button className="btn btnForm rounded w-100 my-1" onClick={addToCart}>
-              Add to Cart
+              ADD TO CART
             </Button>
           </div>
         </Card.Body>
@@ -100,7 +100,7 @@ const ProductModal = (product) => {
           <Carousel variant="dark" interval={null}>
             {images.map((image, index) => (
               <Carousel.Item key={index}>
-                <img src={image} className="d-block w-100" />
+                <img src={image} className="d-block w-100" alt={name} />
               </Carousel.Item>
             ))}
           </Carousel>
@@ -113,7 +113,7 @@ const ProductModal = (product) => {
               handleClose();
             }}
           >
-            Close
+            CLOSE
           </Button>
           <Button
             className="btn btnForm rounded w-100 my-1"
@@ -121,7 +121,7 @@ const ProductModal = (product) => {
               addToCart();
             }}
           >
-            Add to Cart
+            ADD TO CART
           </Button>
         </Modal.Footer>
       </Modal>

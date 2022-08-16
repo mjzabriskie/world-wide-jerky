@@ -50,16 +50,18 @@ const Cartproduct = ({ product }) => {
           <span>Qty:</span>
           <input
             type="number"
+            className='rounded text-center w-25 mx-1'
             placeholder="1"
             value={product.purchaseQuantity}
             onChange={onChange}
           />
           <span
+            className='pointer'
             role="img"
             aria-label="trash"
             onClick={() => removeFromCart(product)}
           >
-            🗑️
+            &#10005;
           </span>
         </div>
       </div>

@@ -45,13 +45,14 @@ const CartPageItem = ({ product }) => {
                 </div>
                 <div className="col pad">
                     <input
+                        className='rounded text-center'
                         type="number"
                         placeholder="1"
                         value={product.purchaseQuantity}
                         onChange={onChange}
                     />
                 </div>
-                <div className="col pad">&#36; {product.price / 100} <span className="close" onClick={() => removeFromCart(product)}>&#10005;</span></div>
+                <div className="col pad">&#36; {product.price / 100} <span className="close pointer" onClick={() => removeFromCart(product)}>&#10005;</span></div>
             </div>
         </div>
     )

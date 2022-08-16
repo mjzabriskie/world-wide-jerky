@@ -49,18 +49,16 @@ function App() {
         <div className="d-flex flex-column min-vh-100">
           <StoreProvider>
             <Header />
-            <div className="container">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/productlist" element={<ProductList />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/cartpage" element={<CartPage />} />
-                <Route path="/product/:id" element={<SingleProduct />} />
-                <Route path="*" element={<NoMatch />} />
-              </Routes>
-            </div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/productlist" element={<ProductList />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/cartpage" element={<CartPage />} />
+              <Route path="/product/:id" element={<SingleProduct />} />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
             <Footer />
           </StoreProvider>
         </div>
