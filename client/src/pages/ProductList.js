@@ -2,6 +2,8 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCTS } from "../utils/queries";
 import ProductModal from "../components/Product";
+import Auth from "../utils/auth";
+import Cart from "../components/Cart";
 
 const ProductList = () => {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
@@ -30,6 +32,7 @@ const ProductList = () => {
           ))
         )}
       </div>
+      {Auth.loggedIn() && <Cart />}
     </main>
   );
 };
