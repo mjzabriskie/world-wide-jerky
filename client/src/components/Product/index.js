@@ -17,8 +17,6 @@ const ProductModal = (product) => {
     description,
     image,
     price,
-    stock,
-    ingredients,
   } = product;
 
   const { cart } = state
@@ -77,7 +75,7 @@ const ProductModal = (product) => {
           >
             {name}
           </Card.Title>
-          {/* <Card.Text>{description}</Card.Text> */}
+          <Card.Text className="text-center">${(price / 100).toFixed(2)}</Card.Text>
           <div className="d-flex flex-column">
             <Button
               className="btn btnFormReverse rounded w-100 my-1"
@@ -104,6 +102,7 @@ const ProductModal = (product) => {
               </Carousel.Item>
             ))}
           </Carousel>
+          <h5 className="text-start pt-2 fw-bold">${(price / 100).toFixed(2)}</h5>
           <p className="p-2">{description}</p>
         </Modal.Body>
         <Modal.Footer className="d-flex flex-column">
