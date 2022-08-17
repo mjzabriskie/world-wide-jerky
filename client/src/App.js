@@ -16,6 +16,7 @@ import SingleProduct from "./pages/SingleProduct";
 import ProductList from "./pages/ProductList";
 import Signup from "./pages/Signup";
 import Profile from './pages/Profile';
+import Success from "./pages/Success";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -58,6 +59,7 @@ function App() {
               <Route path="/productlist" element={<ProductList />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/cartpage" element={<CartPage />} />
+              <Route path="/success" element={<Success />} />
               <Route path="/product/:id" element={<SingleProduct />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>

@@ -15,8 +15,8 @@ const Header = (props) => {
     email: "",
     password: "",
   });
-  const [login, { loginError }] = useMutation(LOGIN_USER);
-  const [addUser, { singupError }] = useMutation(ADD_USER);
+  const [login, { error: loginError }] = useMutation(LOGIN_USER);
+  const [addUser, { error: singupError }] = useMutation(ADD_USER);
 
   const { username: userParam } = useParams();
 
@@ -203,7 +203,11 @@ const Header = (props) => {
                 SUBMIT
               </button>
             </form>
-            {loginError && <div>Login failed</div>}
+            {loginError ? (
+              <div className="text-center mt-2">
+                <span className="border border-danger text-danger p-1 rounded-4">Incorrect email or password, please try again.</span>
+              </div>
+            ) : null}
           </Modal.Body>
         </Modal>
 
@@ -248,7 +252,11 @@ const Header = (props) => {
                 SUBMIT
               </button>
             </form>
-            {singupError && <div>Sign up failed</div>}
+            {singupError ? (
+              <div className="text-center mt-2">
+                <span className="border border-danger text-danger p-1 rounded-4">Signup Failed</span>
+              </div>
+            ) : null}
           </Modal.Body>
         </Modal>
       </div>

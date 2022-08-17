@@ -57,6 +57,15 @@ export const QUERY_ME = gql`
     username
     email
     admin
+    orders {
+      _id
+      purchaseDate
+      products {
+        _id
+        name
+        price
+      }
+    }
   }
 }
 `;
@@ -83,3 +92,7 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
+
+
+
+
