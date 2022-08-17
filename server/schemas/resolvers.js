@@ -54,7 +54,7 @@ const resolvers = {
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
-          images: [`${url}/images/${products[i].image}`]
+          images: [`${url}${products[i].image[0]}`]
         });
 
         // generate price id using the product id
@@ -124,7 +124,7 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`
       });
-      
+
       return { session: session.id };
     }
   },
@@ -176,8 +176,8 @@ const resolvers = {
       if (context.user) {
         const updatedProduct = await Product.findOneAndUpdate(
           { _id: args.productId },
-          { $push: { nutrition: { ...args }}},
-          { new: true}
+          { $push: { nutrition: { ...args } } },
+          { new: true }
         );
 
         return updatedThought;
