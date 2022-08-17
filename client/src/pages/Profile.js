@@ -11,7 +11,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME, UPDATE_USER } from "../utils/queries";
 
 const Profile = (props) => {
-  const [page, setPage] = useState('Password')
+  const [defPage, setPage] = useState("Password")
 
   const { username: userParam } = useParams();
 
@@ -61,30 +61,22 @@ const Profile = (props) => {
         <Col sm={4} className="border border-dark p-2">
           <h2>{user.username}'s Profile</h2>
           <div>
-            <button onClick={handleClick('Password')}>Update Password</button>
+            <button onClick={() => handleClick("Password")}>Update Password</button>
             {aTrue.check() ? (
               <>
-              <button onClick={handleClick('User')}>Update User Admin</button>
-              <button onClick={handleClick('Product')}>Add a Product</button>
+              <button onClick={() => handleClick('User')}>Update User Admin</button>
+              <button onClick={() => handleClick('Product')}>Add a Product</button>
               </>
             ) : (
-              <button onClick={handleClick('Order')}>Order History</button>
+              <button onClick={() => handleClick('Order')}>Order History</button>
             )}
           </div>
         </Col>
         <Col sm={8} className="border border-dark p-2">
-          {(() => {
-            switch (page) {
-              case 'Password':
-                return <UpdatePassComp />
-              case 'Order':
-               return <OrderHistoryComp />
-              case 'User':
-                return <UpdateUserComp />
-              case 'Product':
-                return <AddProductComp />
-            }
-          })}
+        {defPage === 'Password' && <UpdatePassComp />}
+        {defPage === 'User' && <UpdateUserComp />}
+        {defPage === 'Product' && <AddProductComp />}
+        {defPage === 'Order' && <OrderHistoryComp />}
         </Col>
       </Row>
     </Container>
