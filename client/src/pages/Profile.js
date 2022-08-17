@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import { Navigate, useParams } from "react-router-dom";
 import Auth from "../utils/auth";
+import aTrue from '../utils/admin';
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME, UPDATE_USER } from "../utils/queries";
 
@@ -16,7 +17,13 @@ const Profile = (props) => {
 
   const user = data?.me || data?.user || {};
 
-  console.log(user)
+  function userAdminCheck(user) {
+    try {
+      aTrue.check(user)
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/profile:username" />;
@@ -35,7 +42,7 @@ const Profile = (props) => {
     );
   }
 
-
+  userAdminCheck();
   return (
     <Container>
       <Row>
@@ -44,7 +51,7 @@ const Profile = (props) => {
           <div>
             <button>Update Password</button>
             {/* Not functional */}
-            {Auth.admin() ? (
+            {aTrue.check() ? (
               <>
               <button>Update User Admin</button>
               <button>Add a Product</button>

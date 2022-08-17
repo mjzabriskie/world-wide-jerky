@@ -49,23 +49,6 @@ class AuthService {
         // this will reload the page and reset the state of the application
         window.location.assign('/');
     }
-
-    admin() {
-        const token = this.getToken();
-        // use type coersion to check if the token is NOT undefined and the token is NOT expired.
-        try {
-            const decoded = decode(token)
-            console.log(decoded);
-            if (token.admin === 'true') {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        catch (err) {
-            return false;
-        }
-    }
 }
 
 
