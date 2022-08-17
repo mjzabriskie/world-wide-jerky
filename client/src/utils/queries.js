@@ -50,6 +50,17 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+{
+  me {
+    _id
+    username
+    email
+    admin
+  }
+}
+`;
+
 export const QUERY_ME_BASIC = gql`
   {
     me {

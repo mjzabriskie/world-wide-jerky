@@ -15,6 +15,7 @@ import NoMatch from "./pages/NoMatch";
 import SingleProduct from "./pages/SingleProduct";
 import ProductList from "./pages/ProductList";
 import Signup from "./pages/Signup";
+import Profile from './pages/Profile';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -53,6 +54,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/productlist" element={<ProductList />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/cartpage" element={<CartPage />} />

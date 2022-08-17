@@ -7,26 +7,25 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
 
         return userData;
+
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in me");
     },
-    user: async (parent, { username }, context) => {
-      if (context.user) {
-        return User.findOne({ username }).select("-__v -password");
-      }
-      throw new AuthenticationError("Not logged in");
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).select("-__v -password");
+
+      throw new AuthenticationError("Not logged in user");
     },
-    users: async () => {
+    users: async (parent, args, context) => {
       if (context.user) {
         return User.find();
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in users");
     },
     products: async () => {
       return Product.find();
@@ -135,6 +134,16 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    updateUser: async (parent, args, context) => {
+        const updatedUser = await User.findOneAndUpdate(
+          {email: args.email},
+          {admin: args.admin},
+          { new: true }
+        );
+
+        return updatedUser;
+      // probably want an error
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
