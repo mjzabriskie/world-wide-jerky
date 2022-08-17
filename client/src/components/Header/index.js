@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Auth from "../../utils/auth";
-import Modal from "react-bootstrap/Modal";
-import { useMutation } from "@apollo/client";
+import Modal from 'react-bootstrap/Modal';
+import { useMutation, useQuery } from '@apollo/client';
 import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
+import { QUERY_USER } from "../../utils/queries";
 import { useStoreContext } from "../../utils/GlobalState";
 import { TOGGLE_LOGIN, TOGGLE_SIGNUP } from "../../utils/actions";
 
@@ -14,8 +15,16 @@ const Header = (props) => {
     email: "",
     password: "",
   });
-  const [login, { loginError }] = useMutation(LOGIN_USER);
-  const [addUser, { singupError }] = useMutation(ADD_USER);
+  const [login, { error: loginError }] = useMutation(LOGIN_USER);
+  const [addUser, { error: singupError }] = useMutation(ADD_USER);
+
+  const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: userParam }
+  });
+
+  const user = data?.user || {};
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -99,124 +108,157 @@ const Header = (props) => {
   }, [state, dispatch]);
 
   return (
-    <header className="d-flex flex-wrap justify-content-center w-100">
-      <div className="navbar backPrimary w-100">
-        <Link className="navbar-brand text-decoration-none px-5" to="/">
-          <h1 className="secondary font-weight-bold mx-5 px-5">
-            World Wide Jerky
-          </h1>
-        </Link>
+    <header className="d-flex justify-content-between backPrimary">
+      <Link className="navbar-brand text-decoration-none" to="/">
+        <h1 className="font-weight-bold mx-4 my-3">
+          World Wide Jerky
+        </h1>
+      </Link>
 
-        <div className="d-flex flex-row text-center mx-5 px-5">
-          <Link className="btn btnForm text-decoration-none px-4" to="/productlist">Store</Link>
-          <Link className="btn btnForm text-decoration-none px-4" to="/contact">Contact Us</Link>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btnForm text-decoration-none px-4" to="/profile">Me</Link>
-              <a className="btn btnForm text-decoration-none px-4" href="/" onClick={logout}>Logout</a>
-            </>
-          ) : (
-            <>
-              {/* Login Modal */}
-              <button
-                onClick={toggleLogin}
-                className="text-decoration-none backPrimary btnForm px-4"
-              >
-                Login
-              </button>
+      <nav className="navbar navbar-expand-md w-100">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle='collapse'
+          data-bs-target='#toggleMobileMenu'
+          aria-controls="toggleMobileMenu"
+          aria-expanded='false'
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="toggleMobileMenu">
+          <ul className="navbar-nav ms-auto text-center">
+            <li>
+              <Link className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" to="/productlist">STORE</Link>
+            </li>
+            <li>
+              <Link className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" to="/contact">CONTACT</Link>
+            </li>
+            {Auth.loggedIn() ? (
+              <>
+                <li>
+                  <Link className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" to="/profile">ME</Link>
+                </li>
+                <li>
+                  <a className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" href="/" onClick={logout}>LOGOUT</a>
+                </li>
+              </>
+            ) : (
+              <>
+                {/* Login Modal */}
+                <li>
+                  <button
+                    onClick={toggleLogin}
+                    className="nav-link btn btnForm rounded text-decoration-none px-4 m-1"
+                  >
+                    LOGIN
+                  </button>
+                </li>
 
-              <Modal show={openLoginModal} onHide={toggleLogin}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Login</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <button className="btn d-block w-100" onClick={toggleModals}>Signup Instead</button>
-                  <form onSubmit={handleLoginFormSubmit}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                      className="form-control"
-                      placeholder="Your email"
-                      name="email"
-                      type="email"
-                      id="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor="password">Password</label>
-                    <input
-                      className="form-control"
-                      placeholder="******"
-                      name="password"
-                      type="password"
-                      id="password"
-                      value={formState.password}
-                      onChange={handleChange}
-                    />
-                    <button className="btn d-block w-100" type="submit">
-                      Submit
-                    </button>
-                  </form>
-                  {loginError && <div>Login failed</div>}
-                </Modal.Body>
-              </Modal>
-
-              {/* Signup Modal */}
-              <button
-                onClick={toggleSignup}
-                className="text-decoration-none backPrimary btnForm px-4"
-              >
-                Sign Up
-              </button>
-
-              <Modal show={openSignupModal} onHide={toggleSignup}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Sign Up</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <button className="btn d-block w-100" onClick={toggleModals}>Login Instead</button>
-                  <form onSubmit={handleSignupFormSubmit}>
-                    <label htmlFor="username">Username</label>
-                    <input
-                      className="form-control"
-                      placeholder="Your username"
-                      name="username"
-                      type="username"
-                      id="username"
-                      value={formState.username}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor="email">Email</label>
-                    <input
-                      className="form-control"
-                      placeholder="Your email"
-                      name="email"
-                      type="email"
-                      id="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor="password">Password</label>
-                    <input
-                      className="form-control"
-                      placeholder="******"
-                      name="password"
-                      type="password"
-                      id="password"
-                      value={formState.password}
-                      onChange={handleChange}
-                    />
-                    <button className="btn d-block w-100" type="submit">
-                      Submit
-                    </button>
-                  </form>
-                  {singupError && <div>Sign up failed</div>}
-                </Modal.Body>
-              </Modal>
-              {/* <Link className="text-decoration-none px-2" to="/login">Login</Link> */}
-              {/* <Link className="text-decoration-none px-2" to="/signup">Signup</Link> */}
-            </>
-          )}
+                {/* Signup Modal */}
+                <li>
+                  <button
+                    onClick={toggleSignup}
+                    className="nav-link btn btnForm rounded text-decoration-none px-4 m-1"
+                  >
+                    SIGN UP
+                  </button>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
+      </nav>
+
+      <div>
+        <Modal show={openLoginModal} onHide={toggleLogin}>
+          <Modal.Header closeButton>
+            <Modal.Title>Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <button className="btn btnFormReverse rounded d-block w-100 my-1" onClick={toggleModals}>SIGN UP</button>
+            <form onSubmit={handleLoginFormSubmit}>
+              <label htmlFor="email">Email</label>
+              <input
+                className="form-control rounded"
+                placeholder="Your email"
+                name="email"
+                type="email"
+                id="email"
+                value={formState.email}
+                onChange={handleChange}
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                className="form-control rounded"
+                placeholder="******"
+                name="password"
+                type="password"
+                id="password"
+                value={formState.password}
+                onChange={handleChange}
+              />
+              <button className="btn btnForm rounded d-block w-100 my-1" type="submit">
+                SUBMIT
+              </button>
+            </form>
+            {loginError ? (
+              <div className="text-center mt-2">
+                <span className="border border-danger text-danger p-1 rounded-4">Incorrect email or password, please try again.</span>
+              </div>
+            ) : null}
+          </Modal.Body>
+        </Modal>
+
+        <Modal show={openSignupModal} onHide={toggleSignup}>
+          <Modal.Header closeButton>
+            <Modal.Title>Sign Up</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <button className="btn btnFormReverse rounded d-block w-100 my-1" onClick={toggleModals}>LOGIN</button>
+            <form onSubmit={handleSignupFormSubmit}>
+              <label htmlFor="username">Username</label>
+              <input
+                className="form-control rounded"
+                placeholder="Your username"
+                name="username"
+                type="username"
+                id="username"
+                value={formState.username}
+                onChange={handleChange}
+              />
+              <label htmlFor="email">Email</label>
+              <input
+                className="form-control rounded"
+                placeholder="Your email"
+                name="email"
+                type="email"
+                id="email"
+                value={formState.email}
+                onChange={handleChange}
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                className="form-control rounded"
+                placeholder="******"
+                name="password"
+                type="password"
+                id="password"
+                value={formState.password}
+                onChange={handleChange}
+              />
+              <button className="btn btnForm rounded d-block w-100 my-1" type="submit">
+                SUBMIT
+              </button>
+            </form>
+            {singupError ? (
+              <div className="text-center mt-2">
+                <span className="border border-danger text-danger p-1 rounded-4">Signup Failed</span>
+              </div>
+            ) : null}
+          </Modal.Body>
+        </Modal>
       </div>
     </header>
   );

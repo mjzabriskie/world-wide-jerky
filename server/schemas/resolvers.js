@@ -7,26 +7,26 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate({path: 'orders.products'})
 
         return userData;
+
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in me");
     },
-    user: async (parent, { username }, context) => {
-      if (context.user) {
-        return User.findOne({ username }).select("-__v -password");
-      }
-      throw new AuthenticationError("Not logged in");
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).select("-__v -password");
+
+      throw new AuthenticationError("Not logged in user");
     },
-    users: async () => {
+    users: async (parent, args, context) => {
       if (context.user) {
         return User.find();
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in users");
     },
     products: async () => {
       return Product.find();
@@ -55,7 +55,7 @@ const resolvers = {
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
-          images: [`${url}/images/${products[i].image}`]
+          images: [`${url}${products[i].image[0]}`]
         });
 
         // generate price id using the product id
@@ -125,7 +125,7 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`
       });
-      
+
       return { session: session.id };
     }
   },
@@ -135,6 +135,16 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    updateUser: async (parent, args, context) => {
+        const updatedUser = await User.findOneAndUpdate(
+          {email: args.email},
+          {admin: args.admin},
+          { new: true }
+        );
+
+        return updatedUser;
+      // probably want an error
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -167,8 +177,8 @@ const resolvers = {
       if (context.user) {
         const updatedProduct = await Product.findOneAndUpdate(
           { _id: args.productId },
-          { $push: { nutrition: { ...args }}},
-          { new: true}
+          { $push: { nutrition: { ...args } } },
+          { new: true }
         );
 
         return updatedThought;

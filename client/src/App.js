@@ -15,6 +15,8 @@ import NoMatch from "./pages/NoMatch";
 import SingleProduct from "./pages/SingleProduct";
 import ProductList from "./pages/ProductList";
 import Signup from "./pages/Signup";
+import Profile from './pages/Profile';
+import Success from "./pages/Success";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -49,18 +51,18 @@ function App() {
         <div className="d-flex flex-column min-vh-100">
           <StoreProvider>
             <Header />
-            <div className="container">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/productlist" element={<ProductList />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/cartpage" element={<CartPage />} />
-                <Route path="/product/:id" element={<SingleProduct />} />
-                <Route path="*" element={<NoMatch />} />
-              </Routes>
-            </div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/productlist" element={<ProductList />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/cartpage" element={<CartPage />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/product/:id" element={<SingleProduct />} />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
             <Footer />
           </StoreProvider>
         </div>

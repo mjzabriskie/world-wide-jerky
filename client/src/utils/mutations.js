@@ -40,3 +40,30 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation updateUser($email: String!, $admin: Boolean!) {
+    updateUser(email: $email, admin: $admin) {
+      _id
+      username
+      email
+      admin
+    }
+  }
+`;
+
+export const ADD_ORDER = gql`
+  mutation addOrder($products: [ID]!) {
+    addOrder(products: $products) {
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        image
+        price
+        stock
+      }
+    }
+  }
+`;

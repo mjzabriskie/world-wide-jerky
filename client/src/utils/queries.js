@@ -50,6 +50,26 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+{
+  me {
+    _id
+    username
+    email
+    admin
+    orders {
+      _id
+      purchaseDate
+      products {
+        _id
+        name
+        price
+      }
+    }
+  }
+}
+`;
+
 export const QUERY_ME_BASIC = gql`
   {
     me {
@@ -72,3 +92,7 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
+
+
+
+
