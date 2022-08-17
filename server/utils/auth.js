@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'mysecretsshhhhh';
+const secret = process.env.REACT_APP_YOUR_SECRET;
 const expiration = '2h';
 
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
             const { data } = jwt.verify(token, secret, { maxAge: expiration });
             req.user = data;
         } catch {
-            // console.log('Invalid token')
+             console.log('Invalid token')
         }
 
         // return updated request object

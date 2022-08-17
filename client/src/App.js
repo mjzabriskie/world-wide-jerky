@@ -12,7 +12,6 @@ import Contact from "./pages/Contact";
 import CartPage from "./pages/CartLanding/CartPage";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
-import SingleProduct from "./pages/SingleProduct";
 import ProductList from "./pages/ProductList";
 import Signup from "./pages/Signup";
 import Profile from './pages/Profile';
@@ -60,7 +59,6 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/cartpage" element={<CartPage />} />
               <Route path="/success" element={<Success />} />
-              <Route path="/product/:id" element={<SingleProduct />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
             <Footer />

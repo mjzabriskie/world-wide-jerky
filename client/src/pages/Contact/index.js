@@ -6,16 +6,25 @@ import './style.css'
 function Contact() {
     const [modalText, setModalText] = useState('');
     const [openMessageModal, setOpenMessageModal] = useState(false);
+    const [formState, setFormState] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const { name, email, message } = formState;
 
     const handleModalClose = () => setOpenMessageModal(false);
     const handleModalShow = () => setOpenMessageModal(true);
 
     function sendEmail(e) {
         e.preventDefault();
+        setFormState({name: "", email: "", message: ""})
 
         // These environment variables require input from a free emailjs acocunt at emailjs.com
         emailjs.sendForm(process.env.REACT_APP_YOUR_SERVICE_ID, process.env.REACT_APP_YOUR_TEMPLATE_ID, e.target, process.env.REACT_APP_YOUR_PUBLIC_KEY)
             .then((result) => {
+                e.target.reset();
                 setModalText('Your email has been successfully sent.');
                 handleModalShow();
             }, (error) => {
