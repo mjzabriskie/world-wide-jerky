@@ -205,7 +205,7 @@ const Header = (props) => {
             </form>
             {loginError ? (
               <div className="text-center mt-2">
-                <span className="border border-danger text-danger p-1">Incorrect email or password, please try again.</span>
+                <span className="border border-danger text-danger p-1 rounded-4">Incorrect email or password, please try again.</span>
               </div>
             ) : null}
           </Modal.Body>
@@ -253,8 +253,8 @@ const Header = (props) => {
               </button>
             </form>
             {singupError ? (
-              <div className="text-center">
-                <span className="border border-danger text-danger p-1">Signup Failed</span>
+              <div className="text-center mt-2">
+                <span className="border border-danger text-danger p-1 rounded-4">Signup Failed</span>
               </div>
             ) : null}
           </Modal.Body>

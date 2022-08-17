@@ -8,6 +8,7 @@ const typeDefs = gql`
     username: String
     email: String
     admin: Boolean
+    orders: [Order]
   }
 
   type Product {
