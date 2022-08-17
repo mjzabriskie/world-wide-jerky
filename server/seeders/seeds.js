@@ -7,32 +7,19 @@ db.once("open", async () => {
   await Product.deleteMany({});
   await User.deleteMany({});
 
-  // create user data
-  const userData = [];
-
-  for (let i = 0; i < 10; i += 1) {
-    const username = faker.internet.userName();
-    const email = faker.internet.email(username);
-    const password = faker.internet.password();
-
-    userData.push({ username, email, password });
-  }
-
-  const createdUsers = await User.collection.insertMany(userData);
-
   // create products
   const productData = [];
 
   const oldWorld = {
     name: "Old World",
     description:
-      "Old World Beef Jerky brings back the flavor and smoky goodness from a bygone era. Our Old World beef jerky is marinated, smoked and cooked with modern equipment but brings back the flavor of the Old World smoked meats. Enjoy.",
+      "Old World Beef Jerky brings back the flavor and smoky goodness from a bygone era. Our Old World beef jerky is marinated, smoked and cooked with modern equipment but brings back the flavor of Old World smoked meats. Enjoy.",
     image: [
       "/images/old-world.png",
       "/images/old-world-nutrition.png",
       "/images/old-world-ingredients.png",
     ],
-    price: "845",
+    price: "1199",
     stock: "4300",
     ingredients: [
       "Carbonated Water",
@@ -51,7 +38,7 @@ db.once("open", async () => {
       "/images/pepper-nutrition.png",
       "/images/pepper-ingredients.png",
     ],
-    price: "845",
+    price: "1199",
     stock: "4300",
     ingredients: [
       "Carbonated Water",
@@ -70,7 +57,7 @@ db.once("open", async () => {
       "/images/sweet-spicy-nutrition.png",
       "/images/sweet-spicy-ingredients.png",
     ],
-    price: "845",
+    price: "1199",
     stock: "4300",
     ingredients: [
       "Carbonated Water",
@@ -89,7 +76,7 @@ db.once("open", async () => {
       "/images/teriyaki-nutrition.png",
       "/images/teriyaki-ingredients.png",
     ],
-    price: "845",
+    price: "1199",
     stock: "4300",
     ingredients: [
       "Carbonated Water",
@@ -101,8 +88,7 @@ db.once("open", async () => {
   };
   const fourPack = {
     name: "Four-pack Combo",
-    description:
-      "Can't decide on just one? Try all of our delicious flavors!",
+    description: "Can't decide on just one? Try all of our delicious flavors!",
     image: [
       "/images/four-pack.png",
       "/images/old-world.png",
@@ -110,7 +96,7 @@ db.once("open", async () => {
       "/images/sweet-spicy.png",
       "/images/teriyaki.png",
     ],
-    price: "2200",
+    price: "3999",
     stock: "",
     ingredients: [
       "Carbonated Water",
@@ -120,26 +106,6 @@ db.once("open", async () => {
       "Taurine",
     ],
   };
-
-  // for (let i = 0; i < 10; i += 1) {
-  //   const name = faker.commerce.productName();
-  //   const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget elit pulvinar, accumsan dui sagittis, fermentum mi. Sed sagittis lorem ut est rhoncus, bibendum hendrerit est viverra. Suspendisse molestie, dui sed convallis gravida, lectus ante euismod nunc, pulvinar hendrerit magna lorem at neque. Morbi accumsan sed sem quis vulputate. Morbi.';
-  //   let image = faker.image.food();
-  //   image = image.replace('lorempixel', 'loremflickr');
-  //   const price = faker.commerce.price(500, 1000, 0);
-  //   const stock = faker.commerce.price(20, 50, 0);
-  //   const nutrition = {
-  //     calories: faker.commerce.price(300, 500, 0),
-  //     totalFat: faker.commerce.price(20, 50, 0) + " g",
-  //     sodium: faker.commerce.price(20, 50, 0) + " mg",
-  //     totalCarbs: faker.commerce.price(20, 50, 0) + " g",
-  //     protein: faker.commerce.price(20, 50, 0) + " g",
-  //   }
-  //   const ingredients = ['Carbonated Water', 'Sugar', 'Glucose', 'Citric Acid', 'Taurine'];
-
-  //   if( i === 0) {
-  //     productData.push(oldWorld);
-  //   }
 
   productData.push(oldWorld, pepper, sweetSpicy, teriyaki, fourPack);
 
