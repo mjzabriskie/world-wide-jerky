@@ -76,7 +76,7 @@ const Profile = (props) => {
                             </div>
                         </div>
                     </Col>
-                    <Col md={8} className="profile-2 background-primary rounded-right">
+                    <Col md={8} className="profile-2 background-primary rounded-profile">
                         <div className="p-2 m-1">
                             {defPage === 'Password' && <UpdatePassComp />}
                             {defPage === 'User' && <UpdateUserComp />}
