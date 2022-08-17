@@ -41,7 +41,6 @@ const CartPageItem = ({ product }) => {
                 <div className="col-2 pad"><img className="img-fluid cart-image" src={product.image[0]} alt="" /></div>
                 <div className="col pad">
                     <div className="row text-muted m-0">{product.name}</div>
-                    <div className="row m-0">Cotton T-shirt</div>
                 </div>
                 <div className="col pad">
                     <input
