@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import { Navigate, useParams } from "react-router-dom";
 import Auth from "../utils/auth";
 import aTrue from '../utils/admin';
+import  AddProductComp from '../components/Profile/AddProduct';
+import  UpdateUserComp from '../components/Profile/UpdateUser';
+import  UpdatePassComp from '../components/Profile/UpdatePassword';
+import  OrderHistoryComp from '../components/Profile/OrderHistory';
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME, UPDATE_USER } from "../utils/queries";
 
 const Profile = (props) => {
+  const [page, setPage] = useState('Password')
+
   const { username: userParam } = useParams();
 
   // useMutation will be used to change passwords and update admin status
@@ -42,6 +48,12 @@ const Profile = (props) => {
     );
   }
 
+  // switching components
+
+  const handleClick = (pageState) => {
+    setPage(pageState)
+  }
+
   userAdminCheck();
   return (
     <Container>
@@ -49,20 +61,30 @@ const Profile = (props) => {
         <Col sm={4} className="border border-dark p-2">
           <h2>{user.username}'s Profile</h2>
           <div>
-            <button>Update Password</button>
-            {/* Not functional */}
+            <button onClick={handleClick('Password')}>Update Password</button>
             {aTrue.check() ? (
               <>
-              <button>Update User Admin</button>
-              <button>Add a Product</button>
+              <button onClick={handleClick('User')}>Update User Admin</button>
+              <button onClick={handleClick('Product')}>Add a Product</button>
               </>
             ) : (
-              <button>Order History</button>
+              <button onClick={handleClick('Order')}>Order History</button>
             )}
           </div>
         </Col>
         <Col sm={8} className="border border-dark p-2">
-          This shows order history by default, if buttons are clicked will change to update password, change admit, or add product. These will probably be components!
+          {(() => {
+            switch (page) {
+              case 'Password':
+                return <UpdatePassComp />
+              case 'Order':
+               return <OrderHistoryComp />
+              case 'User':
+                return <UpdateUserComp />
+              case 'Product':
+                return <AddProductComp />
+            }
+          })}
         </Col>
       </Row>
     </Container>
