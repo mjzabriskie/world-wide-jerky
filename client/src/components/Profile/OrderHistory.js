@@ -31,13 +31,9 @@ const OrderHistoryComp = () => {
                         </div>
                     ))}
                 </>
-
             ) : null}
-            
-        
         </>
     )
-    
 }
 
 export default OrderHistoryComp;
