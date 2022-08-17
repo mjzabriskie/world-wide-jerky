@@ -3,9 +3,9 @@ import React from 'react';
 const AddProductComp = () => {
 
     return (
-        <div>Add Product</div>
+        <h3>Add Product</h3>
     )
-    
+
 }
 
 export default AddProductComp;
