@@ -102,8 +102,10 @@ function CartPage(product) {
                             <div className="col text-right">&#36; {calculateTotal()}</div>
                         </div>
                         <form className="cart-form">
-                            <p>SHIPPING</p>
-                            <select className="shipping rounded"><option className="text-muted">Standard-Delivery- &#36;5.00</option></select>
+                            <div className='row m-0'>
+                                <div className="col" style={{ paddingLeft: "0px" }}>Shipping</div>
+                                <div className="col text-right">Calculated at Checkout</div>
+                            </div>
                             <p>GIVE CODE</p>
                             <input className="codeInput rounded" id="code" placeholder="Enter your code" />
                         </form>
