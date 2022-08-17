@@ -1,16 +1,25 @@
 import React from "react";
 
 const About = () => {
-    return (
-        <div className="mb-4">
-            <h2>About Us</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a lacus ac velit malesuada mattis vitae vel lacus. Nulla pulvinar pretium quam, sit amet euismod massa interdum quis. Proin scelerisque porta leo nec tempus. Praesent dictum leo hendrerit porta malesuada. Sed vel posuere arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque id libero sed massa aliquet eleifend. Fusce condimentum vehicula dictum. Nunc at dignissim dolor. Curabitur pharetra consectetur suscipit. In hac habitasse platea dictumst. Duis sodales luctus arcu ut dictum. Ut sodales elit ligula, consequat iaculis lorem blandit blandit. Suspendisse potenti. Fusce semper nunc eget molestie ornare. Quisque at quam nec neque dapibus viverra vehicula et elit.
-                <br />
-                <br />
-                Aenean faucibus aliquet aliquam. Duis eros urna, porttitor id eros sit amet, commodo ultricies odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus justo nibh, molestie et nisl a, blandit pulvinar ex. Nullam non hendrerit massa. Duis sagittis, eros lobortis fermentum lobortis, diam lorem convallis quam, a feugiat lacus velit a felis. Maecenas lacinia, ex ut iaculis convallis, ipsum sem egestas lacus, id volutpat nunc purus vitae velit. Duis lectus magna, eleifend eu rutrum ac, facilisis quis lorem. Pellentesque eu nibh a risus porttitor lobortis. Donec feugiat ut libero eget dapibus. Suspendisse eu tristique ipsum. Vestibulum eget risus ac sapien pretium maximus. Vestibulum dapibus neque eget leo tempus, sed mattis nulla sagittis.</p>
-        </div>
-    )
-}
+  return (
+    <div className="mb-4">
+      <h2 className="text-center">About Us</h2>
+      <p className="px-1 px-md-5">
+        World Wide Jerky seeks to bring the best and the finest beef jerky to
+        your door. The flavors of meat snacks throughout the world are offered
+        on our website. From Old World European meat and sausage
+        flavors to Asia, South America and the isles of the sea, World Wide
+        Jerky will bring you new and unique flavors to satisfy your taste. The
+        world is full of fun and flavorful meat snack varieties, so come with us on a culinary tour of the globe where you'll be introduced to new and innovative flavors.
+        <br />
+        <br />
+        Our history in the meat snack industry goes back over 40 years. The number one quality most important to beef jerky is the flavor. While you'll see the usual flavors at World Wide Jerky, you'll also experience flavor from around the world.
+        <br />
+        <br />
+        So give us a try; you'll be glad you did.
+      </p>
+    </div>
+  );
+};
 
 export default About;

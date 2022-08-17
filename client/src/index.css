@@ -70,15 +70,28 @@ code {
 }
 
 .hero {
-  object-fit: cover;
-  object-position: 0% 20%;
+  background-image: url("../public/images/pasture-hero.jpg");
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .3);
   background-repeat: no-repeat;
-  height: 80vh;
+  background-position: center;
+  height: 60vh;
   width: 100%;
+}
+
+.hero-logo {
+  /* max-height: 80%;
+  min-width: 30%; */
+  object-fit: contain;
+  max-height: 80%;
 }
 
 .border-black {
   border-color: var(--tertiary) !important;
+}
+
+img[src="/images/four-pack.png"] {
+  border-bottom: 1px solid black;
 }
 
 @media screen and (max-width: 768px) {
@@ -101,5 +114,13 @@ code {
   p,
   .p {
     font-size: 14px;
+  }
+
+  .hero-logo {
+    max-height: 100%;
+  }
+
+  .hero {
+    height: 30vh;
   }
 }
