@@ -15,22 +15,24 @@ const OrderHistoryComp = () => {
     return (
         <>
             <h3>Order History for {user.username}</h3>
-            {user ? (
-                <>
-                    {user.orders.map((order) => (
-                        <div key={order._id} className="card mb-2 rounded" style={{ width: "18rem" }}>
-                            <div className="card-header">
-                                Items Ordered on {new Date(parseInt(order.purchaseDate)).toLocaleDateString()}:
+            <div className='flex-row'>
+                {user ? (
+                    <>
+                        {user.orders.map((order) => (
+                            <div key={order._id} className="card mb-2 rounded col-12 col-md-6">
+                                <div className="card-header">
+                                    Items Ordered on {new Date(parseInt(order.purchaseDate)).toLocaleDateString()}:
+                                </div>
+                                <ul className="list-group list-group-flush">
+                                    {order.products.map(({ _id, name, price }, index) => (
+                                        <li key={index} className="list-group-item">{name} Jerky ${price / 100}</li>
+                                    ))}
+                                </ul>
                             </div>
-                            <ul className="list-group list-group-flush">
-                                {order.products.map(({ _id, name, price }, index) => (
-                                    <li key={index} className="list-group-item">{name} Jerky ${price / 100}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </>
-            ) : null}
+                        ))}
+                    </>
+                ) : null}
+            </div>
         </>
     )
 }
