@@ -1,0 +1,20 @@
+#profile {
+    margin: auto;
+    max-width: 100%;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: transparent;
+}
+
+.background-primary {
+    background-color: var(--secondary);
+}
+
+.profile-2 {
+    padding: 4vh 5vh;
+}
+
+.rounded-right {
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}

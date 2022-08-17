@@ -3,9 +3,9 @@ import React from 'react';
 const UpdatePassComp = () => {
 
     return (
-        <div>Update Password</div>
+        <h3>Update Password</h3>
     )
-    
+
 }
 
 export default UpdatePassComp;

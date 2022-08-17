@@ -3,9 +3,9 @@ import React from 'react';
 const UpdateUserComp = () => {
 
     return (
-        <div>Update User</div>
+        <h3>Update User</h3>
     )
-    
+
 }
 
 export default UpdateUserComp;
