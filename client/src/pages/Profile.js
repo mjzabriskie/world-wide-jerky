@@ -58,25 +58,29 @@ const Profile = (props) => {
   return (
     <Container>
       <Row>
-        <Col sm={4} className="border border-dark p-2">
-          <h2>{user.username}'s Profile</h2>
-          <div>
-            <button onClick={() => handleClick("Password")}>Update Password</button>
-            {aTrue.check() ? (
-              <>
-              <button onClick={() => handleClick('User')}>Update User Admin</button>
-              <button onClick={() => handleClick('Product')}>Add a Product</button>
-              </>
-            ) : (
-              <button onClick={() => handleClick('Order')}>Order History</button>
-            )}
+        <Col sm={4} className="p-2">
+          <div className="border border-dark p-2 m-1">
+            <h3 className="p-2 border-bottom border-dark">{user.username}'s Profile</h3>
+            <div>
+              <button className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" onClick={() => handleClick("Password")}>Update Password</button>
+              {aTrue.check() ? (
+                <>
+                <button className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" onClick={() => handleClick('User')}>Update User Admin</button>
+                <button className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" onClick={() => handleClick('Product')}>Add a Product</button>
+                </>
+              ) : (
+                <button className="nav-link btn btnForm rounded text-decoration-none px-4 m-1" onClick={() => handleClick('Order')}>Order History</button>
+              )}
+            </div>
           </div>
         </Col>
-        <Col sm={8} className="border border-dark p-2">
-        {defPage === 'Password' && <UpdatePassComp />}
-        {defPage === 'User' && <UpdateUserComp />}
-        {defPage === 'Product' && <AddProductComp />}
-        {defPage === 'Order' && <OrderHistoryComp />}
+        <Col sm={8} className="p-2">
+          <div className="border border-dark p-2 m-1">
+          {defPage === 'Password' && <UpdatePassComp />}
+          {defPage === 'User' && <UpdateUserComp />}
+          {defPage === 'Product' && <AddProductComp />}
+          {defPage === 'Order' && <OrderHistoryComp />}
+          </div>
         </Col>
       </Row>
     </Container>
